@@ -1,0 +1,29 @@
+<p>Học tón nè (PT bậc 2)</p>
+<table>
+  <tr>
+    <td>a:</td>
+    <td><input type="text" #hsa></td>
+  </tr>
+  <tr>
+    <td>b:</td>
+    <td><input type="text" #hsb></td>
+  </tr>
+  <tr>
+    <td>c:</td>
+    <td><input type="text" #hsc></td>
+  </tr>
+  <tr>
+    <td>Result:</td>
+    <td #result></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button (click)="get_solution(hsa, hsb, hsc, result)">Solution</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button (click)="clear_data(hsa, hsb, hsc, result)">Clear</button>
+    </td>
+  </tr>
+</table>

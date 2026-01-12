@@ -1,0 +1,12 @@
+table,td,tr{
+    border: 1px;
+    border-style: solid;
+    border-color: blueviolet;
+}
+p {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e84393;
+    margin-bottom: 25px;
+  }
+  

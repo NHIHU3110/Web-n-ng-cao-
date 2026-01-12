@@ -1,0 +1,47 @@
+<p>Change view</p>
+<button (click)="changeView()">Change view</button>
+<div *ngIf="flag_value==1; else view_k234111441"></div>
+<div>
+    <h1>
+        UEL
+    </h1>
+</div>
+<ng-template #view_k234111441>
+    <h1>
+        Tui là mem của K234112E
+    </h1>
+</ng-template>
+
+<h3>List product 1</h3>
+<p *ngFor="let p of products">{{p}}</p>
+
+<h3>List product 2</h3>
+<select>
+    <option *ngFor="let p of products">{{ p }}</option>
+  </select>
+  
+
+<h3>List product 3</h3>
+<li *ngFor="let p of products">{{p}}</li>
+
+<h3>List of customer</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
+            <th>Customer number</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of customers">
+            <td>{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.phone}}</td>
+            <td>
+                <img [src]="c.img" width="80" alt="{{ c.name }}">
+              </td>
+        </tr>
+    </tbody>
+</table>
