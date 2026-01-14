@@ -1,0 +1,143 @@
+/* Title */
+.title {
+  text-align: center;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 35px;
+  font-size: 32px;
+  letter-spacing: -0.5px;
+}
+
+/* Form container */
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Select */
+select {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 2px solid #e8ecef;
+  font-size: 15px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  flex: 1;
+  min-width: 160px;
+  max-width: 220px;
+  font-family: inherit;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: white;
+}
+
+/* Buttons wrapper - để buttons xuống hàng mới nếu cần */
+.form button {
+  flex-shrink: 0;
+}
+
+/* Buttons */
+button {
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  min-width: 120px;
+}
+
+button:first-of-type {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:first-of-type:hover {
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+button:last-of-type {
+  background: #ecf0f1;
+  color: #7f8c8d;
+  border: 2px solid #dfe6e9;
+}
+
+button:last-of-type:hover {
+  background: #dfe6e9;
+  border-color: #b2bec3;
+}
+
+/* Result box */
+.result {
+  max-width: 450px;
+  width: 90%;
+  margin: auto;
+  border-radius: 16px;
+  border: none;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  color: white;
+}
+
+/* Result title */
+.result h3 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Result text */
+.result p {
+  margin: 12px 0;
+  font-size: 16px;
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.result p strong {
+  color: #ffeaa7;
+  font-weight: 700;
+}
+
+/* Responsive - trên màn hình nhỏ vẫn đẹp */
+@media (max-width: 768px) {
+  .form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  select {
+    max-width: 100%;
+  }
+  
+  button {
+    width: 100%;
+  }
+}

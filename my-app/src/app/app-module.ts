@@ -9,6 +9,7 @@ import { Ptb1 } from './ptb1/ptb1';
 import { FormsModule } from '@angular/forms';
 import { Ptb2 } from './ptb2/ptb2';
 import { Learndirective } from './learndirective/learndirective';
+import { LunarYear } from './lunar-year/lunar-year';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { Learndirective } from './learndirective/learndirective';
     Learnbiding,
     Ptb1,
     Ptb2,
-    Learndirective
+    Learndirective,
+    LunarYear
   ],
   imports: [
     BrowserModule,
