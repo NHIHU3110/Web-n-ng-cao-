@@ -11,6 +11,8 @@ import { Ptb2 } from './ptb2/ptb2';
 import { Learndirective } from './learndirective/learndirective';
 import { LunarYear } from './lunar-year/lunar-year';
 import { Listcustomer } from './listcustomer/listcustomer';
+import { Listcustomer2 } from './listcustomer2/listcustomer2';
+import { Customerdetail } from './customerdetail/customerdetail';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { Listcustomer } from './listcustomer/listcustomer';
     Ptb2,
     Learndirective,
     LunarYear,
-    Listcustomer
+    Listcustomer,
+    Listcustomer2,
+    Customerdetail,
+    
   ],
   imports: [
     BrowserModule,
