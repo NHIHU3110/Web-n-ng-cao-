@@ -13,6 +13,7 @@ import { LunarYear } from './lunar-year/lunar-year';
 import { Listcustomer } from './listcustomer/listcustomer';
 import { Listcustomer2 } from './listcustomer2/listcustomer2';
 import { Customerdetail } from './customerdetail/customerdetail';
+import { Listcustomer3 } from './listcustomer3/listcustomer3';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { Customerdetail } from './customerdetail/customerdetail';
     Listcustomer,
     Listcustomer2,
     Customerdetail,
+    Listcustomer3,
     
   ],
   imports: [
