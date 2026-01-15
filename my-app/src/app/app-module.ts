@@ -14,7 +14,8 @@ import { Listcustomer } from './listcustomer/listcustomer';
 import { Listcustomer2 } from './listcustomer2/listcustomer2';
 import { Customerdetail } from './customerdetail/customerdetail';
 import { Listcustomer3 } from './listcustomer3/listcustomer3';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
