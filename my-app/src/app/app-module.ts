@@ -14,6 +14,7 @@ import { Listcustomer } from './listcustomer/listcustomer';
 import { Listcustomer2 } from './listcustomer2/listcustomer2';
 import { Customerdetail } from './customerdetail/customerdetail';
 import { Listcustomer3 } from './listcustomer3/listcustomer3';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { Listcustomer3 } from './listcustomer3/listcustomer3';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
