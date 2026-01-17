@@ -15,6 +15,7 @@ import { Listcustomer2 } from './listcustomer2/listcustomer2';
 import { Customerdetail } from './customerdetail/customerdetail';
 import { Listcustomer3 } from './listcustomer3/listcustomer3';
 import {HttpClientModule} from '@angular/common/http';
+import { Ex14 } from './ex14/ex14';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
     Listcustomer2,
     Customerdetail,
     Listcustomer3,
+    Ex14,
     
   ],
   imports: [
