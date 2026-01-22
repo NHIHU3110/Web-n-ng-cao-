@@ -1,0 +1,81 @@
+.shop-container {
+    width: 90%;
+    margin: 30px auto;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+  
+  /* Tiêu đề */
+  .shop-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #222;
+    letter-spacing: 2px;
+  }
+  
+  /* Bảng */
+  .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-table th,
+  .product-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  /* Header */
+  .product-table th {
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  /* Hover */
+  .product-table tbody tr:hover {
+    background: #f7f7f7;
+  }
+  
+  /* Ảnh */
+  .product-table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Giá */
+  .price {
+    font-weight: bold;
+    color: #e74c3c;
+  }
+  
+  /* Nút */
+  .buy-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 16px;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  
+  .buy-btn:hover {
+    background: #444;
+  }
+  /* Highlight cho dòng được chọn từ Router (Màu xám) */
+  .highlight {
+    background-color: #f0f0f0;
+  }
+
+  /* Highlight cho sản phẩm giá âm (Màu vàng) */
+  .price-negative {
+    background-color: #ffff00 !important; /* Màu vàng rực */
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,74 @@
+/* Khung tổng */
+table {
+    margin: 60px auto;
+    width: 420px;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+  
+  /* Dòng */
+  tr {
+    transition: background 0.3s ease;
+  }
+  
+  tr:hover {
+    background: #f4f8fb;
+  }
+  
+  /* Ô */
+  td {
+    padding: 14px 18px;
+    font-size: 15px;
+    color: #2c3e50;
+  }
+  
+  /* Cột tiêu đề */
+  td:first-child {
+    font-weight: 600;
+    background: #f7f9fc;
+    width: 120px;
+    color: #34495e;
+  }
+  
+  /* Ảnh */
+  img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Tiêu đề nhỏ */
+  p {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2d3d;
+    letter-spacing: 1px;
+  }
+  .back-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 20px;
+    background: #3498db;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .back-btn:hover {
+    background: #217dbb;
+  }
+  

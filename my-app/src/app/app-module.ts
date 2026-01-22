@@ -17,6 +17,8 @@ import { Listcustomer3 } from './listcustomer3/listcustomer3';
 import {HttpClientModule} from '@angular/common/http';
 import { Ex14 } from './ex14/ex14';
 import { Notfound } from './notfound/notfound';
+import { Listproduct } from './listproduct/listproduct';
+import { Productdetail } from './productdetail/productdetail';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { Notfound } from './notfound/notfound';
     Listcustomer3,
     Ex14,
     Notfound,
+    Listproduct,
+    Productdetail,
     
   ],
   imports: [
