@@ -1,0 +1,67 @@
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff6f61;
+  font-weight: 600;
+}
+
+/* Back button */
+.back-btn {
+  padding: 8px 16px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Table */
+.detail-table {
+  width: 55%;
+  margin: auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Table cells */
+.detail-table td {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 14px 16px;
+  font-size: 15px;
+}
+
+.detail-table tr:nth-child(odd) {
+  background-color: #fff7f5;
+}
+
+.detail-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+/* Image */
+.img-cell {
+  text-align: center;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+}
+
+.img-cell img {
+  width: 160px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.img-cell img:hover {
+  transform: scale(1.05);
+}

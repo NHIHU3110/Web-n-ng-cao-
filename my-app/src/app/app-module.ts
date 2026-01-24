@@ -19,6 +19,8 @@ import { Ex14 } from './ex14/ex14';
 import { Notfound } from './notfound/notfound';
 import { Listproduct } from './listproduct/listproduct';
 import { Productdetail } from './productdetail/productdetail';
+import { Ex13 } from './ex13/ex13';
+import { Ex13detail } from './ex13detail/ex13detail';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { Productdetail } from './productdetail/productdetail';
     Notfound,
     Listproduct,
     Productdetail,
+    Ex13,
+    Ex13detail,
     
   ],
   imports: [

@@ -7,6 +7,8 @@ import { Listcustomer3 } from './listcustomer3/listcustomer3';
 import { Notfound } from './notfound/notfound';
 import { Listproduct } from './listproduct/listproduct';
 import { Productdetail } from './productdetail/productdetail';
+import { Ex13 } from './ex13/ex13';
+import { Ex13detail } from './ex13detail/ex13detail';
 
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
@@ -15,7 +17,10 @@ const routes: Routes = [
   {path:'khach-hang-3', component: Listcustomer3},
   { path: 'san-pham-1', component: Listproduct},
   { path: 'san-pham-1/:id', component: Productdetail},
+  { path: 'ex13', component: Ex13 },
+  { path: 'ex13/:id', component: Ex13detail },
   { path: '**', component: Notfound },
+
 ];
 
 @NgModule({
