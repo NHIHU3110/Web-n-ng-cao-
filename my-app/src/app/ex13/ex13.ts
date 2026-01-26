@@ -41,6 +41,8 @@ export class Ex13 {
 
   viewDetail(p: any) {
     console.log(p);
-    this.router.navigate(['ex13', p.ProductId]);
+    this.router.navigate(['/ex13', p.ProductId]).catch(err => {
+      console.error('Navigation error:', err);
+    });
   }
 }

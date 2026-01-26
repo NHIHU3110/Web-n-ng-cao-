@@ -1,0 +1,49 @@
+[
+    {
+        "CustomerTypeId": 1,
+        "CustomterTypeName": "VIP",
+        "Customers": [
+            {
+                "Id": "Cus123",
+                "Name": "Obama",
+                "Email": "obama@gmail.com",
+                "Age": 67,
+                "Image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/480px-President_Barack_Obama.jpg"
+            },
+            {
+                "Id": "Cus456",
+                "Name": "Kim jong Un",
+                "Email": "unun@gmail.com",
+                "Age": 38,
+                "Image": "https://admin.vov.gov.vn/UploadFolder/KhoTin/Images/UploadFolder/VOVVN/Images/sites/default/files/styles/large/public/2025-09/nha_lanh_dao_trieu_tien_kim_jong_un_tham_du_le_ky_niem_80_nam_ket_thuc_the_chien_ii.jpg"
+            },
+            {
+                "Id": "Cus789",
+                "Name": "Putin",
+                "Email": "putin@gmail.com",
+                "Age": 77,
+                "Image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Владимир_Путин_%2808-03-2024%29_%28cropped%29.jpg"
+            }
+        ]
+    },
+    {
+        "CustomerTypeId": 2,
+        "CustomterTypeName": "Normal",
+        "Customers": [
+            {
+                "Id": "Cus000",
+                "Name": "Hồ Cẩm Đào",
+                "Email": "hodao@gmail.com",
+                "Age": 16,
+                "Image": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Hu_Jintao_2012.jpg"
+            },
+            {
+                "Id": "Cus111",
+                "Name": "Tap Can Binh",
+                "Email": "binhbinh@gmail.com",
+                "Age": 67,
+                "Image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Xi_Jinping_2019.jpg/480px-Xi_Jinping_2019.jpg"
+            }
+        ]
+    }
+]

@@ -1,0 +1,42 @@
+<p>ex18 works!</p>
+<p class="text-danger">{{ errMessage }}</p>
+
+<table class="table table-bordered align-middle">
+  <thead class="table-light">
+    <tr>
+      <th style="width:80px">Id</th>
+      <th style="width:180px">Name</th>
+      <th>Email</th>
+      <th style="width:80px">Age</th>
+      <th style="width:180px">#</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="data.length > 0; else noData">
+    <ng-container *ngFor="let g of data; let i = index">
+      <tr class="table-secondary">
+        <td colspan="5"><b>{{ i + 1 }} - {{ g.CustomterTypeName }}</b></td>
+      </tr>
+
+      <tr *ngFor="let c of g.Customers">
+        <td>{{ c.Id }}</td>
+        <td>{{ c.Name }}</td>
+        <td>{{ c.Email }}</td>
+        <td>{{ c.Age }}</td>
+        <td>
+          <img [src]="c.Image" alt="" style="width:160px;height:120px;object-fit:cover" />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+
+  <ng-template #noData>
+    <tbody>
+      <tr>
+        <td colspan="5" style="padding: 50px; color: #999;">
+          {{ errMessage ? 'Lỗi: ' + errMessage : 'Đang tải dữ liệu...' }}
+        </td>
+      </tr>
+    </tbody>
+  </ng-template>
+</table>

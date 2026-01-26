@@ -11,6 +11,7 @@ import { Ex13detail } from './ex13detail/ex13detail';
 import { Ex13 } from './ex13/ex13';
 import { FakeProduct } from './fake-product/fake-product';
 import { Ex27 } from './ex27/ex27';
+import { Ex18 } from './ex18/ex18';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
   { path: 'khach-hang-1', component: Listcustomer },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'san-pham-1', component: Listproduct },
   { path: 'san-pham-1/:id', component: Productdetail },
   { path: 'ex13/:id', component: Ex13detail },
-  { path: '', redirectTo: 'ex13', pathMatch: 'full' },
+  { path: '', redirectTo: 'ex18', pathMatch: 'full' },
   { path: 'ex26', component: FakeProduct },
   { path: 'ex27', component: Ex27 },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 

@@ -24,6 +24,7 @@ import { Ex13detail } from './ex13detail/ex13detail';
 import { CommonModule } from '@angular/common';
 import { FakeProduct } from './fake-product/fake-product';
 import { Ex27 } from './ex27/ex27';
+import { Ex18 } from './ex18/ex18';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { Ex27 } from './ex27/ex27';
     Ex13detail,
     FakeProduct,
     Ex27,
+    Ex18,
 
   ],
   imports: [
