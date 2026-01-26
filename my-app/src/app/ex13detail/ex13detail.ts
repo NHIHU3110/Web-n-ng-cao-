@@ -25,6 +25,6 @@ export class Ex13detail {
   }
 
   goBack() {
-    this.router.navigate(['ex13']);
+    this.router.navigate(['/']);
   }
 }

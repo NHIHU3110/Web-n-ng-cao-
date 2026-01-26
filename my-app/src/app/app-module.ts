@@ -14,14 +14,16 @@ import { Listcustomer } from './listcustomer/listcustomer';
 import { Listcustomer2 } from './listcustomer2/listcustomer2';
 import { Customerdetail } from './customerdetail/customerdetail';
 import { Listcustomer3 } from './listcustomer3/listcustomer3';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Ex14 } from './ex14/ex14';
 import { Notfound } from './notfound/notfound';
 import { Listproduct } from './listproduct/listproduct';
 import { Productdetail } from './productdetail/productdetail';
 import { Ex13 } from './ex13/ex13';
 import { Ex13detail } from './ex13detail/ex13detail';
-
+import { CommonModule } from '@angular/common';
+import { FakeProduct } from './fake-product/fake-product';
+import { Ex27 } from './ex27/ex27';
 
 @NgModule({
   declarations: [
@@ -43,12 +45,15 @@ import { Ex13detail } from './ex13detail/ex13detail';
     Productdetail,
     Ex13,
     Ex13detail,
-    
+    FakeProduct,
+    Ex27,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     HttpClientModule
   ],
   providers: [

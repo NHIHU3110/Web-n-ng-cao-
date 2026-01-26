@@ -1,0 +1,9 @@
+[
+    {
+    "context": ["/exchange"],
+    "target": "https://fakestoreapi.com", 
+    "secure": true,
+    "changeOrigin":true,
+    "logLevel":"debug"
+    }
+    ]
