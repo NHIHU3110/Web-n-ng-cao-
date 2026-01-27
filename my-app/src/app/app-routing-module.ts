@@ -23,12 +23,13 @@ const routes: Routes = [
   { path: 'san-pham-1', component: Listproduct },
   { path: 'san-pham-1/:id', component: Productdetail },
   { path: 'ex13/:id', component: Ex13detail },
-  { path: '', redirectTo: 'ex18', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'ex26', component: FakeProduct },
   { path: 'ex27', component: Ex27 },
   { path: 'ex19-product', component: Ex19Product },
-  { path: 'ex19-list-product', component: Ex19ListProduct},
-  { path: 'ex19-service-product', component: Ex19ServiceProduct},
+  { path: 'ex19-list-product', component: Ex19ListProduct },
+  { path: 'ex19-service-product', component: Ex19ServiceProduct },
+  { path: 'ex18', component: Ex18 },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 
 
 ];
