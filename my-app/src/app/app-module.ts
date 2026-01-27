@@ -25,6 +25,9 @@ import { CommonModule } from '@angular/common';
 import { FakeProduct } from './fake-product/fake-product';
 import { Ex27 } from './ex27/ex27';
 import { Ex18 } from './ex18/ex18';
+import { Ex19Product } from './ex19-product/ex19-product';
+import { Ex19ListProduct } from './ex19-list-product/ex19-list-product';
+import { Ex19ServiceProduct } from './ex19-service-product/ex19-service-product';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { Ex18 } from './ex18/ex18';
     FakeProduct,
     Ex27,
     Ex18,
+    Ex19Product,
+    Ex19ListProduct,
+    Ex19ServiceProduct,
 
   ],
   imports: [

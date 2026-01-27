@@ -37,8 +37,29 @@
 
 </div> -->
 
-<app-ex18></app-ex18>
-<!-- <app-ex13></app-ex13> -->
-
+<!-- <app-ex18></app-ex18> -->
+<!-- <app-ex13></app-ex13>  -->
+ <!-- <app-ex14></app-ex14> -->
+<!-- <p>Ex 19 menu</p> -->
+<div class="nav">
+    <a routerLink="/ex19-product" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Ex19 Product
+    </a>
+  
+    <a routerLink="/ex19-list-product" routerLinkActive="active">
+      Ex19 List Product
+    </a>
+  
+    <a routerLink="/ex19-service-product" routerLinkActive="active">
+      Ex19 Service Product
+    </a>
+  </div>
+  
+  <div class="page">
+    <router-outlet></router-outlet>
+  </div>
+  
+ <router-outlet></router-outlet>
+ 
 
 <router-outlet />
