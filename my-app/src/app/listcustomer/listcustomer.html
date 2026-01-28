@@ -1,21 +1,32 @@
-<p>listcustomer works!</p>
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Picture</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let c of customers">
-            <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
-            <td>{{c.age}}</td>
-            <td>
-                <img src="{{c.image}}" height="100" width="100"/>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="api-page-container">
+    <div class="page-header">
+        <h2 class="text-gradient">Customer Registry</h2>
+        <p class="subtitle">Standardized list of our regular customer base (Group 1)</p>
+    </div>
+
+    <div class="glass-card">
+        <div class="card-content">
+            <table class="customer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Profile Identity</th>
+                        <th>Age</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of customers; let i = index">
+                        <td><span class="id-badge">{{ c.id }}</span></td>
+                        <td class="profile-cell">
+                            <img [src]="c.image" class="avatar-sm" [alt]="c.name" width="44" height="44">
+                            <span class="customer-name">{{ c.name }}</span>
+                        </td>
+                        <td><span class="age-label">{{ c.age }} years</span></td>
+                        <td><span class="status-pill status-active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

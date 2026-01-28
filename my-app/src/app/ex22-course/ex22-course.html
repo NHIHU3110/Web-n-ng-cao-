@@ -1,0 +1,106 @@
+<div class="registration-page luxury-theme">
+    <div class="page-header">
+        <h2 class="text-gradient">Elite Learning Platform</h2>
+        <p class="subtitle">Enroll in our world-class specialized courses</p>
+    </div>
+
+    <div class="registration-glass-card">
+        <div class="card-glow"></div>
+        <h3 class="form-title-inner">Registration Details</h3>
+
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()" class="premium-form">
+            <div class="form-grid">
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label><i class="bi bi-person-fill"></i> Full Name</label>
+                    <div class="input-wrapper">
+                        <input type="text" formControlName="name" placeholder="Enter your name" />
+                        <div class="validation-dot"
+                            [ngClass]="{'valid': f['name'].valid, 'invalid': f['name'].touched && f['name'].invalid}">
+                        </div>
+                    </div>
+                    <p class="err-msg" *ngIf="f['name'].touched && f['name'].invalid">Please enter your name</p>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label><i class="bi bi-envelope-at-fill"></i> Email Address</label>
+                    <div class="input-wrapper">
+                        <input type="email" formControlName="email" placeholder="email@example.com" />
+                        <div class="validation-dot"
+                            [ngClass]="{'valid': f['email'].valid, 'invalid': f['email'].touched && f['email'].invalid}">
+                        </div>
+                    </div>
+                    <div class="err-msg" *ngIf="f['email'].touched && f['email'].invalid">
+                        <span *ngIf="f['email'].errors?.['required']">Email is required</span>
+                        <span *ngIf="f['email'].errors?.['email']">Invalid email format</span>
+                    </div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label><i class="bi bi-telephone-fill"></i> Phone Number</label>
+                    <div class="input-wrapper">
+                        <input type="text" formControlName="phone" placeholder="+00 000 000 000" />
+                        <div class="validation-dot"
+                            [ngClass]="{'valid': f['phone'].valid, 'invalid': f['phone'].touched && f['phone'].invalid}">
+                        </div>
+                    </div>
+                    <p class="err-msg" *ngIf="f['phone'].touched && f['phone'].invalid">Valid phone number required</p>
+                </div>
+
+                <!-- Course Selection -->
+                <div class="form-group">
+                    <label><i class="bi bi-journal-bookmark-fill"></i> Specialized Program</label>
+                    <div class="input-wrapper">
+                        <select formControlName="course">
+                            <option *ngFor="let c of courses" [value]="c">{{ c }} Masterclass</option>
+                        </select>
+                        <i class="bi bi-chevron-down select-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <!-- Shift Selection -->
+                <div class="option-group">
+                    <label>Preferred Shift</label>
+                    <div class="radio-chips">
+                        <label class="chip">
+                            <input type="radio" formControlName="time" value="sang" />
+                            <span class="chip-label">Morning</span>
+                        </label>
+                        <label class="chip">
+                            <input type="radio" formControlName="time" value="toi" />
+                            <span class="chip-label">Evening</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Terms Agreement -->
+                <div class="option-group checkbox-premium">
+                    <label class="toggle-container">
+                        <input type="checkbox" formControlName="agree" />
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Accept Elite Terms of Service</span>
+                    </label>
+                    <p class="err-msg" *ngIf="f['agree'].touched && f['agree'].invalid">Required to proceed</p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-royal" [disabled]="!regForm.valid && regForm.touched">
+                Confirm Enrollment <i class="bi bi-arrow-right-short"></i>
+            </button>
+        </form>
+
+        <div class="result-terminal" *ngIf="resultJson">
+            <div class="terminal-header">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <span class="terminal-title">SUCCESS_PAYLOAD.JSON</span>
+            </div>
+            <div class="terminal-content">
+                <pre><code>{{ resultJson }}</code></pre>
+            </div>
+        </div>
+    </div>
+</div>

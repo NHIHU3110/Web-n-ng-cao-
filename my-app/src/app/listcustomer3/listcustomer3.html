@@ -1,37 +1,48 @@
-<p>List Customer 3</p>
+<div class="api-page-container">
+  <div class="page-header">
+    <h2 class="text-gradient">VIP Global Network</h2>
+    <p class="subtitle">Categorized partnership overview with age-based filtering</p>
 
-<div class="filter-box">
-  From Age:
-  <select #fromAge>
-    <option *ngFor="let age of arr_ages" [value]="age">{{ age }}</option>
-  </select>
+    <div class="filter-glass-panel mt-4">
+      <div class="filter-inputs">
+        <label>Age Range:</label>
+        <input type="number" #fromAge placeholder="From" />
+        <span>to</span>
+        <input type="number" #toAge placeholder="To" />
+        <button class="btn-filter-premium" (click)="do_filter(fromAge.value, toAge.value)">
+          <i class="bi bi-filter"></i> Apply
+        </button>
+      </div>
+    </div>
+  </div>
 
-  To Age:
-  <select #toAge>
-    <option *ngFor="let age of arr_ages" [value]="age">{{ age }}</option>
-  </select>
-
-  <button (click)="do_filter(fromAge.value, toAge.value)">Filter</button>
+  <div class="glass-card mt-5">
+    <div class="card-content">
+      <table class="customer-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Profile Identity</th>
+            <th>Current Age</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of customer; let i = index">
+            <td><span class="id-badge">{{ c.id }}</span></td>
+            <td class="profile-cell">
+              <img [src]="c.image" class="avatar-sm" [alt]="c.name">
+              <span class="customer-name">{{ c.name }}</span>
+            </td>
+            <td><span class="age-label">{{ c.age }} years</span></td>
+            <td>
+              <div class="status-pill" [ngClass]="c.age >= 60 ? 'status-active' : 'status-pending'">
+                {{ c.age >= 60 ? 'Senior' : 'Active' }}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Picture</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let c of customer">
-      <td>{{ c.id }}</td>
-      <td>{{ c.name }}</td>
-      <td>{{ c.age }}</td>
-      <td>
-        <img [src]="c.image" width="100" height="100" />
-      </td>
-    </tr>
-  </tbody>
-</table>

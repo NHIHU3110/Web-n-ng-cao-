@@ -1,40 +1,70 @@
-<div id="container">
-    <ul>
-        <li> <a href="#">HOME</a></li>
-        <li> <a href="#">CUSTOMERS</a>
-            <ul>
-                <li><a routerLink="khach-hang-1">Customer 1</a></li>
-                <li><a routerLink="khach-hang-2">Customer 2</a></li>
-                <li><a routerLink="khach-hang-3">Customer 3</a></li>
-            </ul>
-        </li>
-        <li> <a href="#">PRODUCT</a>
-            <ul>
-                <li> <a routerLink="san-pham-1">Product 1</a></li>
-                <li> <a routerLink="san-pham-1">Product 2</a></li>
-                <li> <a routerLink="san-pham-1">Product 3</a></li>
-                <li> <a routerLink="san-pham-1">Product 4</a></li>
-            </ul>
-        </li>
-        <li> <a href="#">FORMS</a>
-            <ul>
-                <li> <a href="#">FORM</a></li>
-                <li> <a href="#">REACT FORM</a></li>
-            </ul>
-        </li>
-        <li> <a href="#">EXTERNAL API</a>
-            <ul>
-                <li> <a routerLink="ex26">EX26</a></li>
-                <li> <a routerLink="ex27">EX27</a></li>
-                <li> <a routerLink="ex18">EX18</a></li>
-            </ul>
-        </li>
-        <li> <a href="#">HTML DOM</a></li>
-        <li> <a href="#">NGÔN NGỮ ASP</a></li>
-        <li> <a routerLink="gioi-thieu">ABOUT</a></li>
+<div class="navbar-container">
+    <nav class="nav-main">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a routerLink="/" class="nav-link" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <i class="bi bi-house-door"></i> HOME
+                </a>
+            </li>
 
-    </ul>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="bi bi-people"></i> CUSTOMERS
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a routerLink="khach-hang-1" class="dropdown-link">Customer Group 1</a>
+                    </li>
+                    <li class="dropdown-item"><a routerLink="khach-hang-2" class="dropdown-link">Customer Group 2</a>
+                    </li>
+                    <li class="dropdown-item"><a routerLink="khach-hang-3" class="dropdown-link">Customer Group 3</a>
+                    </li>
+                </ul>
+            </li>
 
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="bi bi-box-seam"></i> PRODUCT
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a routerLink="san-pham-1" class="dropdown-link">Product List 1</a></li>
+                    <li class="dropdown-item"><a routerLink="san-pham-2" class="dropdown-link">Product List 2</a></li>
+                    <li class="dropdown-item"><a routerLink="san-pham-3" class="dropdown-link">Product List 3</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="bi bi-card-checklist"></i> FORMS
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a routerLink="ex21-login" class="dropdown-link">Login Form (Ex21)</a>
+                    </li>
+                    <li class="dropdown-item"><a routerLink="ex22-course" class="dropdown-link">Course Registration
+                            (Ex22)</a></li>
+                    <li class="dropdown-item"><a routerLink="ex24-math" class="dropdown-link">Math Calculator (Ex24)</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="bi bi-link-45deg"></i> EXTERNAL API
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a routerLink="ex26" class="dropdown-link">Ex26 API</a></li>
+                    <li class="dropdown-item"><a routerLink="ex27" class="dropdown-link">Ex27 API</a></li>
+                    <li class="dropdown-item"><a routerLink="ex18" class="dropdown-link">Ex18 Customer Groups</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a routerLink="gioi-thieu" class="nav-link" routerLinkActive="active-link">
+                    <i class="bi bi-info-circle"></i> ABOUT
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 <!-- <app-ex18></app-ex18> -->
@@ -55,5 +85,5 @@
     </a>
   </div>
    -->
-
+<!-- <app-lunar-year></app-lunar-year> -->
 <router-outlet></router-outlet>

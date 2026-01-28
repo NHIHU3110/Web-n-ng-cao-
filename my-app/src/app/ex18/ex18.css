@@ -1,81 +1,176 @@
-.table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    background: white;
+.api-page-container {
+    padding: 60px 20px;
+    background: #fdfdfd;
+    min-height: 100vh;
 }
 
-.table th {
-    background-color: #ffc9c9;
-    color: #ff6b6b;
-    padding: 15px;
+.page-header {
     text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header h2 {
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Groups List */
+.groups-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.group-card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-light);
+    animation: fadeInDown 0.6s ease-out backwards;
+}
+
+.group-header {
+    background: #f8fafc;
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.group-index {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 14px;
+    background: var(--primary-bg);
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.group-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.group-stats {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.group-content {
+    padding: 10px;
+}
+
+/* Customer Table */
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.customer-table th {
+    text-align: left;
+    padding: 15px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.customer-table td {
+    padding: 16px 20px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 14px;
+    color: #475569;
+}
+
+.id-badge {
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+}
+
+.profile-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.customer-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.customer-name {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.email-link {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.age-badge {
     font-weight: 600;
 }
 
-.table td {
-    padding: 15px;
+/* No Data Template */
+.no-data-card {
+    max-width: 500px;
+    margin: 100px auto;
     text-align: center;
-    border-bottom: 1px solid #fff5f5;
+    padding: 60px;
+    border-radius: 30px;
+    color: var(--text-muted);
 }
 
-.table-secondary {
-    background-color: #fff0f0 !important;
-    color: #ff6b6b;
-    font-weight: bold;
+.no-data-card i {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 20px;
 }
 
-img {
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-img:hover {
-    transform: scale(1.05);
+.group-card:nth-child(2) {
+    animation-delay: 0.1s;
 }
 
-.table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    background: white;
-}
-
-.table th {
-    background-color: #ffc9c9;
-    color: #ff6b6b;
-    padding: 15px;
-    text-align: center;
-    font-weight: 600;
-}
-
-.table td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #fff5f5;
-}
-
-.table-secondary {
-    background-color: #fff0f0 !important;
-    color: #ff6b6b;
-    font-weight: bold;
-}
-
-img {
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-img:hover {
-    transform: scale(1.05);
+.group-card:nth-child(3) {
+    animation-delay: 0.2s;
 }

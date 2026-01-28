@@ -1,41 +1,52 @@
-<p class="text-danger">{{ errMessage }}</p>
+<div class="api-page-container">
+  <div class="page-header">
+    <h2 class="text-gradient">Customer Segmentation</h2>
+    <p class="subtitle">Categorized customer data with grouped insights</p>
+    <p class="status-msg text-danger" *ngIf="errMessage">{{ errMessage }}</p>
+  </div>
 
-<table class="table table-bordered align-middle">
-  <thead class="table-light">
-    <tr>
-      <th style="width:80px">Id</th>
-      <th style="width:180px">Name</th>
-      <th>Email</th>
-      <th style="width:80px">Age</th>
-      <th style="width:180px">#</th>
-    </tr>
-  </thead>
+  <div class="groups-container" *ngIf="data.length > 0; else noData">
+    <div class="group-card" *ngFor="let g of data; let i = index">
+      <div class="group-header">
+        <div class="group-title">
+          <span class="group-index">#{{ i + 1 }}</span>
+          <h3>{{ g.CustomterTypeName }}</h3>
+        </div>
+        <div class="group-stats">
+          <i class="bi bi-people-fill"></i> {{ g.Customers.length }} Members
+        </div>
+      </div>
 
-  <tbody *ngIf="data.length > 0; else noData">
-    <ng-container *ngFor="let g of data; let i = index">
-      <tr class="table-secondary">
-        <td colspan="5"><b>{{ i + 1 }} - {{ g.CustomterTypeName }}</b></td>
-      </tr>
-
-      <tr *ngFor="let c of g.Customers">
-        <td>{{ c.Id }}</td>
-        <td>{{ c.Name }}</td>
-        <td>{{ c.Email }}</td>
-        <td>{{ c.Age }}</td>
-        <td>
-          <img [src]="c.Image" alt="" style="width:160px;height:120px;object-fit:cover" />
-        </td>
-      </tr>
-    </ng-container>
-  </tbody>
+      <div class="group-content">
+        <table class="customer-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Profile</th>
+              <th>Email Address</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of g.Customers">
+              <td><span class="id-badge">{{ c.Id }}</span></td>
+              <td class="profile-cell">
+                <img [src]="c.Image" [alt]="c.Name" class="customer-avatar">
+                <span class="customer-name">{{ c.Name }}</span>
+              </td>
+              <td><span class="email-link">{{ c.Email }}</span></td>
+              <td><span class="age-badge">{{ c.Age }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <ng-template #noData>
-    <tbody>
-      <tr>
-        <td colspan="5" style="padding: 50px; color: #999;">
-          {{ errMessage ? 'Lỗi: ' + errMessage : 'Đang tải dữ liệu...' }}
-        </td>
-      </tr>
-    </tbody>
+    <div class="no-data-card glass">
+      <i class="bi bi-inbox"></i>
+      <p>{{ errMessage ? 'Error: ' + errMessage : 'The lists are being loaded...' }}</p>
+    </div>
   </ng-template>
-</table>
+</div>

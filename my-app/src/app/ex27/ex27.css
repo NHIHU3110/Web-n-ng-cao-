@@ -1,164 +1,209 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+/* reuse container styles from global if available, but here we keep it scoped */
 
-/* Nếu bạn để trong component css mà không ăn, chuyển block này qua styles.css */
-body {
-  background: radial-gradient(circle at top, #f4f4f4, #d6d2d2);
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
+.api-page-container {
+  padding: 60px 20px;
+  background: #fbfbfc;
+  min-height: 100vh;
 }
 
-.card {
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+.page-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
-.img-container {
+.subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Card - Ex27 Specific Style */
+.product-card {
+  background: white;
+  border-radius: 30px;
+  padding: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
   position: relative;
-  padding: 14px 12px 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0));
+  display: flex;
+  flex-direction: column;
 }
 
-.img-container .first {
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.product-badge {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  padding: 12px 12px 0;
+  top: 25px;
+  left: 25px;
+  background: #ff4757;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 800;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
 }
 
-.percent {
-  padding: 6px 10px;
-  background: linear-gradient(135deg, #ffc107, #ff9f1a);
-  border-radius: 999px;
-  color: #fff;
+.product-image-wrapper {
+  background: #f8fafc;
+  border-radius: 24px;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.product-image {
+  max-height: 80%;
+  max-width: 80%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08);
+}
+
+.btn-heart {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-heart:hover {
+  color: #ff4757;
+  transform: scale(1.1);
+}
+
+.product-info {
+  padding: 10px 15px 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rating-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff8e1;
+  color: #ffa000;
+  padding: 4px 10px;
+  border-radius: 50px;
   font-size: 12px;
   font-weight: 700;
-  height: 28px;
-  min-width: 64px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  letter-spacing: 0.2px;
-  box-shadow: 0 8px 16px rgba(255, 193, 7, 0.35);
 }
 
-.wishlist {
-  height: 34px;
-  width: 34px;
+.product-sales {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.product-footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0,0,0,0.06);
-  cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #f1f5f9;
 }
 
-.wishlist:hover {
-  transform: scale(1.08);
-  background: #fff;
+.product-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
 }
 
-.img-container img {
+.btn-buy-now {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
   border-radius: 12px;
-}
-
-.img-scale {
-  width: 200px;
-  height: 250px;
-  object-fit: cover;
-  transition: transform 0.25s ease;
-}
-
-.card:hover .img-scale {
-  transform: scale(1.05);
-}
-
-.product-detail-container {
-  padding: 14px 14px 16px;
-}
-
-.product-detail-container h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.text-danger.fw-bold {
-  font-size: 18px;
-  letter-spacing: 0.2px;
-}
-
-.ratings {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.04);
-}
-
-.ratings i,
-.ratings span,
-.count {
-  color: #7a7a7a;
-  font-size: 13px;
-}
-
-.count {
-  font-size: 13px;
-}
-
-.btn.btn-warning {
+  font-weight: 700;
   border: none;
-  border-radius: 12px;
-  padding: 10px 12px;
-  box-shadow: 0 10px 18px rgba(255, 193, 7, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-}
-
-.btn.btn-warning:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 22px rgba(255, 193, 7, 0.45);
-  filter: brightness(0.98);
-}
-
-/* Giữ phần radio nếu bạn có dùng */
-label.radio {
+  transition: 0.3s;
   cursor: pointer;
 }
 
-label.radio input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  pointer-events: none;
+.btn-buy-now:hover {
+  background: #1d4ed8;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
 }
 
-label.radio span {
-  height: 25px;
-  width: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #dc3545;
-  color: #dc3545;
-  font-size: 10px;
+/* Spinner and Animations same as Ex26 */
+.loading-state {
+  text-align: center;
+  padding: 100px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top-color: var(--primary);
   border-radius: 50%;
-  text-transform: uppercase;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
 }
 
-label.radio input:checked + span {
-  border-color: #dc3545;
-  background-color: #dc3545;
-  color: #fff;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

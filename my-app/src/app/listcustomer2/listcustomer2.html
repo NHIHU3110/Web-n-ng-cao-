@@ -1,9 +1,83 @@
-<p>listcustomer2 works!</p>
-<ol>
-    <li *ngFor ="let c of customers">
-        <div>
-            <p>{{c.id}}-{{c.name}}</p>
-            <img src="{{c.picture}}" width="100" height="100"/>
+<div class="api-page-container luxury-theme">
+    <div class="page-header">
+        <h2 class="text-gradient">The VIP Circle</h2>
+        <p class="subtitle">Exclusive profile insights into our high-tier member network</p>
+    </div>
+
+    <div class="member-grid">
+        <div class="member-card glass" *ngFor="let c of customers; let i = index">
+            <div class="card-glow"></div>
+            <div class="member-avatar-wrapper">
+                <img [src]="c.image" [alt]="c.name" class="member-avatar">
+                <div class="status-indicator"></div>
+            </div>
+
+            <div class="member-details">
+                <div class="member-id">#{{ c.id }}</div>
+                <h3 class="member-name">{{ c.name }}</h3>
+                <div class="member-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Member Age</span>
+                        <span class="stat-value">{{ c.age }}</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">Tier Status</span>
+                        <span class="stat-value accent">Premium</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button class="btn-action-gold" (click)="viewProfile(c)">
+                    <i class="bi bi-star-fill"></i> View Profile
+                </button>
+            </div>
         </div>
-    </li>
-</ol>
+    </div>
+
+    <!-- Profile Modal Overlay -->
+    <div class="profile-overlay" *ngIf="selectedMember" (click)="closeProfile()">
+        <div class="profile-modal" (click)="$event.stopPropagation()">
+            <button class="btn-close-modal" (click)="closeProfile()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+            <div class="modal-header">
+                <div class="header-back"></div>
+                <img [src]="selectedMember.image" class="modal-avatar">
+            </div>
+
+            <div class="modal-body">
+                <div class="badge-vip">ELITE TIER</div>
+                <h2 class="modal-name">{{ selectedMember.name }}</h2>
+                <p class="modal-tag">#{{ selectedMember.id }} • {{ selectedMember.location }}</p>
+
+                <div class="modal-bio">
+                    <h4>About Member</h4>
+                    <p>{{ selectedMember.bio }}</p>
+                </div>
+
+                <div class="modal-stats-grid">
+                    <div class="m-stat">
+                        <span class="label">Joined</span>
+                        <span class="val">{{ selectedMember.joinDate }}</span>
+                    </div>
+                    <div class="m-stat">
+                        <span class="label">Age</span>
+                        <span class="val">{{ selectedMember.age }}</span>
+                    </div>
+                    <div class="m-stat">
+                        <span class="label">Status</span>
+                        <span class="val status-on">Verified</span>
+                    </div>
+                </div>
+
+                <div class="modal-skills">
+                    <span class="skill-pill" *ngFor="let s of selectedMember.skills"># {{ s }}</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

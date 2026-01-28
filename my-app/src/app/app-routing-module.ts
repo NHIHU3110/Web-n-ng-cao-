@@ -15,6 +15,9 @@ import { Ex18 } from './ex18/ex18';
 import { Ex19Product } from './ex19-product/ex19-product';
 import { Ex19ListProduct } from './ex19-list-product/ex19-list-product';
 import { Ex19ServiceProduct } from './ex19-service-product/ex19-service-product';
+import { Ex21Login } from './ex21-login/ex21-login';
+import { Ex22Course } from './ex22-course/ex22-course';
+import { Ex24Math } from './ex24-math/ex24-math';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
   { path: 'khach-hang-1', component: Listcustomer },
@@ -30,6 +33,9 @@ const routes: Routes = [
   { path: 'ex19-list-product', component: Ex19ListProduct },
   { path: 'ex19-service-product', component: Ex19ServiceProduct },
   { path: 'ex18', component: Ex18 },
+  { path: 'ex21-login', component: Ex21Login },
+  { path: 'ex22-course', component: Ex22Course },
+  { path: 'ex24-math', component: Ex24Math },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 
 
 ];

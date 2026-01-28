@@ -1,41 +1,33 @@
-<div class="shop-container">
-  <h2 class="shop-title">POP MART STORE</h2>
+<div class="api-page-container">
+  <div class="page-header">
+    <h2 class="text-gradient">POP MART STORE</h2>
+    <p class="subtitle">Exclusive collections for collectors and enthusiasts</p>
+  </div>
 
-  <table class="product-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th>Picture</th>
-        <th>Action</th>
-      </tr>
-    </thead>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let p of products"
+      [ngClass]="{'highlight-premium': p.id == selective_id, 'price-alert': p.price.startsWith('-')}">
 
-    <tbody>
-      <tr *ngFor="let p of products" 
-          [ngClass]="{
-            'highlight': p.id == selective_id,
-            'price-negative': p.price.startsWith('-')
-          }">
-        <td>{{ p.id }}</td>
-        <td>{{ p.name }}</td>
-        <td>{{ p.price }}</td>
-        <td>
-          <img
-            [src]="p.image"
-            [alt]="p.name"
-            title="Click to view detail"
-            class="product-img"
-            (click)="view_detail(p.id)"
-          />
-        </td>
-        <td>
-          <button class="buy-btn" (click)="view_detail(p.id)">
-            View detail
+      <div class="product-image-wrapper" (click)="view_detail(p.id)">
+        <img [src]="p.image" [alt]="p.name" class="product-image">
+        <div class="category-badge">Premium</div>
+      </div>
+
+      <div class="product-info">
+        <h3 class="product-title">{{ p.name }}</h3>
+        <div class="product-meta">
+          <div class="product-id">#{{ p.id }}</div>
+          <div class="product-price">{{ p.price }}</div>
+        </div>
+
+        <p class="product-desc">Authentic designer toy from the latest series. Perfect for home or office display.</p>
+
+        <div class="product-actions">
+          <button class="btn-detail-premium" (click)="view_detail(p.id)">
+            <i class="bi bi-eye"></i> View Detail
           </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

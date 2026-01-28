@@ -1,0 +1,44 @@
+<div class="math-container">
+    <div class="math-card glass">
+        <h2 class="text-gradient">Mathematics Calculator</h2>
+
+        <table class="math-table">
+            <tr>
+                <td class="label-cell">a:</td>
+                <td>
+                    <input type="text" [(ngModel)]="a" [class.error-bg]="!isNumber(a)" placeholder="Enter a" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">b:</td>
+                <td>
+                    <input type="text" [(ngModel)]="b" [class.error-bg]="!isNumber(b)" placeholder="Enter b" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">c:</td>
+                <td>
+                    <input type="text" [(ngModel)]="c" [class.error-bg]="!isNumber(c)" placeholder="Enter c" />
+                </td>
+            </tr>
+            <tr class="result-row">
+                <td class="label-cell">Result:</td>
+                <td>
+                    <div class="result-display">{{ result }}</div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="calc-buttons">
+            <button (click)="getMax()">MAX</button>
+            <button (click)="getMin()">MIN</button>
+            <button (click)="getSin()">sin(a)</button>
+            <button (click)="getCos()">Cos(a)</button>
+            <button (click)="getPow()">a^b</button>
+        </div>
+
+        <div class="err-msg" *ngIf="!isValid">
+            <i class="bi bi-exclamation-triangle"></i> Please enter valid numbers.
+        </div>
+    </div>
+</div>
