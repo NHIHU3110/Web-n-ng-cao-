@@ -31,12 +31,13 @@ import { Ex19ServiceProduct } from './ex19-service-product/ex19-service-product'
 import { Ex21Login } from './ex21-login/ex21-login';
 import { Ex22Course } from './ex22-course/ex22-course';
 import { Ex24Math } from './ex24-math/ex24-math';
+import { Ex28Bitcoin } from './ex28-bitcoin/ex28-bitcoin';
 
 @NgModule({
   declarations: [
     App, About, Contact, Listcustomer, Listcustomer2, Listcustomer3, Notfound, Listproduct, Productdetail,
     Ex13detail, Ex13, FakeProduct, Ex27, Ex18, Ex19Product, Ex19ListProduct, Ex19ServiceProduct,
-    Ex21Login, Ex22Course, Ex24Math,
+    Ex21Login, Ex22Course, Ex24Math, Ex28Bitcoin,
     Learnbiding, Ptb1, Ptb2, Learndirective, LunarYear, Customerdetail, Ex14
   ],
   imports: [

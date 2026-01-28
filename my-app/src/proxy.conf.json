@@ -1,9 +1,26 @@
 [
     {
-    "context": ["/exchange"],
-    "target": "https://fakestoreapi.com", 
-    "secure": true,
-    "changeOrigin":true,
-    "logLevel":"debug"
+        "context": [
+            "/exchange"
+        ],
+        "target": "https://fakestoreapi.com",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/exchange": ""
+        }
+    },
+    {
+        "context": [
+            "/v1/bpi"
+        ],
+        "target": "https://blockchain.info",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/v1/bpi": "/ticker"
+        }
     }
-    ]
+]
