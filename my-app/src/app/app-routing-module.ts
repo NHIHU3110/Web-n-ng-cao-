@@ -27,7 +27,6 @@ const routes: Routes = [
   { path: 'san-pham-1', component: Listproduct },
   { path: 'san-pham-1/:id', component: Productdetail },
   { path: 'ex13/:id', component: Ex13detail },
-  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'ex26', component: FakeProduct },
   { path: 'ex27', component: Ex27 },
   { path: 'ex19-product', component: Ex19Product },
@@ -38,6 +37,7 @@ const routes: Routes = [
   { path: 'ex22-course', component: Ex22Course },
   { path: 'ex24-math', component: Ex24Math },
   { path: 'ex28-bitcoin', component: Ex28Bitcoin },
+  { path: '', redirectTo: 'ex21-login', pathMatch: 'full' },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 
 
 ];

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ILogin } from './login-model';
 
 @Component({
   selector: 'app-ex21-login',
@@ -14,10 +13,10 @@ export class Ex21Login implements OnInit {
   messageJson: string = '';   // hiển thị JSON dưới nút Login (màu đỏ)
   errorMsg: string = '';
 
-  loginForm: any; // Declare loginForm without initialization
+  loginForm: any;
 
   constructor(private fb: FormBuilder, private router: Router) {
-    this.loginForm = this.fb.group({ // Initialize loginForm in the constructor
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       remember: [false]
@@ -35,7 +34,7 @@ export class Ex21Login implements OnInit {
           password: obj.password || '',
           remember: true
         });
-      } catch { }
+      } catch {}
     }
   }
 
@@ -50,7 +49,7 @@ export class Ex21Login implements OnInit {
       return;
     }
 
-    const data: ILogin = this.loginForm.value;
+    const data = this.loginForm.value;
 
     // 1) hiển thị JSON string dưới button (đúng yêu cầu)
     this.messageJson = JSON.stringify(data);
