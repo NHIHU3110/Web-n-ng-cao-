@@ -19,6 +19,7 @@ import { Ex21Login } from './ex21-login/ex21-login';
 import { Ex22Course } from './ex22-course/ex22-course';
 import { Ex24Math } from './ex24-math/ex24-math';
 import { Ex28Bitcoin } from './ex28-bitcoin/ex28-bitcoin';
+import { Books } from './books/books';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
   { path: 'khach-hang-1', component: Listcustomer },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'ex24-math', component: Ex24Math },
   { path: 'ex28-bitcoin', component: Ex28Bitcoin },
   { path: '', redirectTo: 'ex21-login', pathMatch: 'full' },
+  { path: 'ex39', component: Books },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 
 
 ];

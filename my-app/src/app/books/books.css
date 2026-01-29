@@ -1,25 +1,26 @@
 :root {
     --museum-bg: #f8f9fa;
     --accent-1: #1a1a1a;
+    --accent-2: #8a2387;
+    --accent-3: #e94057;
     --canvas-shadow: 20px 20px 60px #d1d1d1, -20px -20px 60px #ffffff;
 }
 
-.notfound-wrapper {
+.gallery-wrapper {
     position: relative;
     min-height: 100vh;
     background: radial-gradient(circle at top right, #fdfbfb 0%, #ebedee 100%);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    padding-bottom: 5rem;
 }
 
-/* Background Animated Orbs (Coherent with Books page) */
+/* Background Animated Orbs */
 .background-orb {
     position: fixed;
     border-radius: 50%;
     filter: blur(80px);
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.4;
     pointer-events: none;
 }
 
@@ -64,7 +65,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     padding-top: 4rem;
 }
 
@@ -79,7 +80,7 @@
 
 .museum-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 300;
     color: var(--accent-1);
     margin-bottom: 1.5rem;
@@ -92,18 +93,39 @@
     margin: 0 auto;
 }
 
-.notfound-container {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    padding: 0 2rem 5rem;
+.museum-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem 10rem;
 }
 
-.art-card {
-    width: 100%;
-    max-width: 500px;
+/* ART GRID - Asymmetric Layout */
+.art-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8rem 4rem;
+}
+
+.art-item {
     position: relative;
+    width: 380px;
+    flex-shrink: 0;
+}
+
+/* Alternate Heights and Positions */
+.art-item:nth-child(even) {
+    margin-top: 6rem;
+}
+
+.art-item:nth-child(3n) {
+    width: 420px;
+}
+
+/* ART CARD & DECORATION */
+.art-card {
+    position: relative;
+    width: 100%;
 }
 
 .art-decoration {
@@ -112,44 +134,56 @@
     left: -20px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(30, 30, 30, 0.03), rgba(60, 60, 60, 0.03));
+    background: linear-gradient(135deg, rgba(138, 35, 135, 0.05), rgba(233, 64, 87, 0.05));
     border-radius: 4px;
     z-index: 0;
+    transition: all 0.6s ease;
+}
+
+.art-item:nth-child(even) .art-decoration {
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.03), rgba(60, 60, 60, 0.03));
 }
 
 .art-canvas {
     position: relative;
     z-index: 1;
     background: white;
-    padding: 40px;
+    padding: 15px;
     box-shadow: var(--canvas-shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
     overflow: hidden;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.notfound-number {
-    font-family: 'Outfit', sans-serif;
-    font-size: 8rem;
-    font-weight: 100;
-    color: #f1f1f1;
-    letter-spacing: -5px;
-    line-height: 1;
-    margin-bottom: 1rem;
+.art-image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.notfound-message {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--accent-1);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
+/* HOVER EFFECTS */
+.art-item:hover .art-canvas {
+    transform: scale(1.03) translateY(-10px);
 }
 
+.art-item:hover .art-image {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.art-item:hover .art-decoration {
+    transform: translate(-10px, -10px) rotate(2deg);
+}
+
+.art-item:nth-child(even):hover .art-decoration {
+    transform: translate(10px, 10px) rotate(-2deg);
+}
+
+/* REVEAL LAYER - Now Only for Decoration */
 .art-reveal {
     position: absolute;
     top: 0;
@@ -164,7 +198,7 @@
     transition: all 0.5s ease;
 }
 
-.art-card:hover .art-reveal {
+.art-item:hover .art-reveal {
     opacity: 1;
 }
 
@@ -179,10 +213,12 @@
     backdrop-filter: blur(4px);
 }
 
+/* PERMANENT LABEL */
 .art-label {
     margin-top: 1.5rem;
     padding-left: 10px;
     border-left: 2px solid var(--accent-1);
+    animation: fadeInUp 1s ease-out;
 }
 
 .art-name {
@@ -191,6 +227,7 @@
     font-size: 1.2rem;
     font-weight: 500;
     text-transform: uppercase;
+    letter-spacing: 0.02em;
     margin-bottom: 5px;
 }
 
@@ -198,47 +235,51 @@
     font-family: 'Outfit', sans-serif;
     font-size: 0.75rem;
     color: #888;
+    letter-spacing: 0.05em;
     font-style: italic;
 }
 
-.action-section {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.back-home-btn {
-    font-family: 'Outfit', sans-serif;
-    text-decoration: none;
-    padding: 1rem 2.5rem;
-    background: var(--accent-1);
-    color: white;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+/* Responsive */
+@media (max-width: 1024px) {
+    .museum-container {
+        padding: 0 2rem 5rem;
+    }
 
-.back-home-btn:hover {
-    background: #333;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    .art-item {
+        width: 320px;
+    }
+
+    .art-item:nth-child(even) {
+        margin-top: 0;
+    }
+
+    .art-grid {
+        gap: 4rem;
+    }
 }
 
 @media (max-width: 640px) {
-    .notfound-number {
-        font-size: 6rem;
-    }
-
     .museum-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
-    .art-canvas {
-        min-height: 300px;
+    .art-item {
+        width: 100%;
+    }
+
+    .art-image {
+        height: 350px;
     }
 }

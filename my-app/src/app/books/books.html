@@ -1,0 +1,38 @@
+<div class="gallery-wrapper">
+    <!-- Dynamic Background Decoration -->
+    <div class="background-orb orb-1"></div>
+    <div class="background-orb orb-2"></div>
+    <div class="background-orb orb-3"></div>
+
+    <div class="museum-header">
+        <div class="museum-tag">COLLECTION // 2026</div>
+        <h1 class="museum-title">Curated Gallery</h1>
+        <div class="museum-line"></div>
+    </div>
+
+    <div class="museum-container">
+        <div *ngIf="errMessage" class="error-msg">{{errMessage}}</div>
+
+        <div class="art-grid">
+            <div class="art-item" *ngFor="let book of books; let i = index" [attr.data-index]="i">
+                <div class="art-card">
+                    <!-- Decorative layer behind -->
+                    <div class="art-decoration"></div>
+
+                    <div class="art-canvas">
+                        <img [src]="'http://localhost:3000/' + book.Image" [alt]="book.BookName" class="art-image">
+                        <div class="art-reveal">
+                            <span class="art-id">REFERENCE // 0{{book.BookId}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Permanent Gallery Label -->
+                    <div class="art-label">
+                        <h3 class="art-name">{{book.BookName}}</h3>
+                        <div class="art-metadata">Original Print // Series {{book.BookId}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
