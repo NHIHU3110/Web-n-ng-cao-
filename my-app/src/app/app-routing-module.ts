@@ -21,6 +21,7 @@ import { Ex24Math } from './ex24-math/ex24-math';
 import { Ex28Bitcoin } from './ex28-bitcoin/ex28-bitcoin';
 import { Books } from './books/books';
 import { BookDetail } from './book-detail/book-detail';
+import { FileUpload } from './file-upload/file-upload';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
   { path: 'khach-hang-1', component: Listcustomer },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'ex28-bitcoin', component: Ex28Bitcoin },
   { path: '', redirectTo: 'ex21-login', pathMatch: 'full' },
   { path: 'ex39', component: Books },
+  { path: 'file-upload', component: FileUpload },
   { path: 'ex41', component: BookDetail },
   { path: 'ex41/:id', component: BookDetail },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 

@@ -22,6 +22,24 @@
         "pathRewrite": {
             "^/v1/bpi": "/ticker"
         }
+    },
+    {
+        "context": [
+            "/books"
+        ],
+        "target": "http://127.0.0.1:3000",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    {
+        "context": [
+            "/upload",
+            "/api"
+        ],
+        "target": "http://127.0.0.1:3001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
     }
-    
 ]

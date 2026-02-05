@@ -1,0 +1,70 @@
+<div class="upload-container">
+    <h2>Upload New Image</h2>
+
+    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload name="image">
+
+    <div class="file-upload">
+        <span class="file-name">{{fileName || "No file uploaded yet."}}</span>
+
+        <button class="choose-btn" (click)="fileUpload.click()">
+            <i class="bi bi-folder2-open"></i> Choose File
+        </button>
+    </div>
+
+    <div class="actions">
+        <button class="upload-btn" (click)="upload()" [disabled]="!selectedFile || uploadProgress > 0">
+            <i class="bi bi-cloud-upload"></i> Upload
+        </button>
+        <button class="cancel-btn" (click)="reset()" *ngIf="selectedFile">
+            <i class="bi bi-x-circle"></i> Cancel
+        </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress" *ngIf="uploadProgress > 0">
+        <div class="progress-bar" [style.width.%]="uploadProgress">
+            {{uploadProgress}}%
+        </div>
+    </div>
+
+    <!-- Preview Link if uploaded -->
+    <div *ngIf="fileName && uploadProgress === 100" class="upload-success">
+        <p><i class="bi bi-check-circle-fill"></i> Upload Completed!</p>
+
+        <div class="image-preview-container">
+            <img [src]="'http://localhost:3001/image/' + fileName" alt="Uploaded Image" class="uploaded-image-preview">
+        </div>
+
+        <div class="action-buttons">
+            <a [href]="'http://localhost:3001/image/' + fileName" target="_blank" class="view-btn">
+                <i class="bi bi-eye"></i> View Full Size
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Uploaded Files Gallery -->
+<div class="gallery-container">
+    <div class="gallery-header">
+        <h3>Uploaded Files</h3>
+        <button class="refresh-btn" (click)="loadFiles()">
+            <i class="bi bi-arrow-clockwise"></i> Refresh
+        </button>
+    </div>
+
+    <div class="gallery-grid">
+        <div *ngFor="let file of files" class="file-card">
+            <div class="file-image">
+                <img [src]="file.url" [alt]="file.filename" loading="lazy">
+            </div>
+            <div class="file-info">
+                <span class="filename" [title]="file.filename">{{file.filename}}</span>
+                <span class="filesize">{{file.size | number}} Bytes</span>
+            </div>
+        </div>
+
+        <div *ngIf="files.length === 0" class="empty-state">
+            <p>No files uploaded yet.</p>
+        </div>
+    </div>
+</div>
