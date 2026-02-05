@@ -15,7 +15,8 @@
 
         <div class="art-grid">
             <div class="art-item" *ngFor="let book of books; let i = index" [attr.data-index]="i">
-                <div class="art-card">
+                <a class="art-card" [routerLink]="['/ex41', book.BookId]"
+                    style="text-decoration: none; cursor: pointer; display: block;">
                     <!-- Decorative layer behind -->
                     <div class="art-decoration"></div>
 
@@ -31,7 +32,7 @@
                         <h3 class="art-name">{{book.BookName}}</h3>
                         <div class="art-metadata">Original Print // Series {{book.BookId}}</div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

@@ -1,0 +1,69 @@
+<div class="museum-detail-wrapper">
+    <!-- Search Section -->
+    <div class="museum-search-section">
+        <div class="museum-search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" #bookId placeholder="Search Archive by ID (e.g., b1)..."
+                (keyup.enter)="searchBook(bookId.value)">
+            <button (click)="searchBook(bookId.value)">
+                <i class="bi bi-search" style="color: white; margin-right: 5px;"></i> SEARCH
+            </button>
+        </div>
+        <div *ngIf="errMessage" class="museum-error-msg">{{errMessage}}</div>
+    </div>
+
+    <!-- Main Detail Section -->
+    <div class="museum-container" *ngIf="book; else emptyState">
+        <div class="art-detail-layout">
+            <!-- Left Side: Canvas Image -->
+            <div class="art-canvas-container">
+                <div class="art-canvas">
+                    <img [src]="'http://localhost:3000/' + book.Image" [alt]="book.BookName" class="art-image">
+                    <div class="art-reveal">
+                        <span class="art-id">REFERENCE // {{book.BookId}}</span>
+                    </div>
+                </div>
+                <div class="art-decoration"></div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="art-info-panel">
+                <div class="museum-tag">EXHIBITION RECORD</div>
+                <h1 class="art-name-title">{{book.BookName}}</h1>
+                <div class="museum-line"></div>
+
+                <div class="art-description-box">
+                    <p class="art-summary">
+                        This piece, cataloged under Reference <strong>{{book.BookId}}</strong>, represents a significant
+                        contribution to the collection. It is valued at <strong>{{book.Price | currency:'USD'}}</strong>
+                        and currently maintained within the premium technical series.
+                    </p>
+
+                    <div class="art-metadata-list">
+                        <div class="meta-item">
+                            <span class="meta-label">CATALOG STATUS</span>
+                            <span class="meta-value">Original Print</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">VALUE</span>
+                            <span class="meta-value">{{book.Price | currency:'USD'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="art-actions">
+                    <button class="museum-back-btn" routerLink="/ex39">
+                        <i class="bi bi-arrow-left"></i> RETURN TO GALLERY
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #emptyState>
+        <div class="museum-empty-state" *ngIf="!errMessage">
+            <div class="museum-line"></div>
+            <p>Please enter a valid Reference ID to view archival details.</p>
+        </div>
+    </ng-template>
+</div>

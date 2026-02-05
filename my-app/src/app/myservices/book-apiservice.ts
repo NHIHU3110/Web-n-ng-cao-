@@ -8,19 +8,25 @@ import { IBook } from '../myclass/ibook';
 })
 export class BookAPIservice {
   constructor(private _http: HttpClient) { }
-getBooks():Observable<any>
-{
-  const headers=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
-  const requestOptions:Object={
-  headers:headers,
-  responseType:"text"
+  getBooks(): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.get<any>("http://localhost:3000/books", requestOptions).pipe(
+      map(res => JSON.parse(res) as Array<IBook>),
+      retry(3),
+      catchError(this.handleError))
   }
-  return this._http.get<any>("http://localhost:3000/books",requestOptions).pipe(
-  map(res=>JSON.parse(res) as Array<IBook>),
-  retry(3),
-  catchError(this.handleError))
+
+  getBookDetails(bookId: string): Observable<any> {
+    return this._http.get<any>("http://localhost:3000/books/" + bookId).pipe(
+      retry(3),
+      catchError(this.handleError))
   }
-  handleError(error:HttpErrorResponse){
-  return throwError(()=>new Error(error.message))
+
+  handleError(error: HttpErrorResponse) {
+    return throwError(() => new Error(error.message))
   }
 }
