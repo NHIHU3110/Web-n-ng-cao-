@@ -1,0 +1,46 @@
+<div class="ex50-container">
+    <div class="header-section">
+        <h2>QUẢN LÝ THÔNG TIN SÁCH</h2>
+        <a class="create-link" (click)="createBook()">Create New</a>
+    </div>
+
+    <div *ngIf="errMessage" class="error-msg">{{errMessage}}</div>
+
+    <table class="book-table">
+        <thead>
+            <tr>
+                <th>Tensach</th>
+                <th>Giaban</th>
+                <th>Mota</th>
+                <th>Anhbia</th>
+                <th>Ngaycapnhat</th>
+                <th>Soluongton</th>
+                <th>MaCD</th>
+                <th>MaNXB</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td class="book-name">{{book.BookName}}</td>
+                <td class="book-price">{{book.Price | number:'1.2-2'}}</td>
+                <td class="book-desc">{{book.Description}}</td>
+                <td class="book-image">
+                    <img [src]="'http://localhost:3001/image/' + (book.Image.startsWith('images/') ? book.Image.substring(7) : book.Image)"
+                        alt="cover" onerror="this.src='assets/images/no-image.png'">
+                    <br>
+                    <span>{{book.Image}}</span>
+                </td>
+                <td>{{book.PubDate}}</td>
+                <td>{{book.Quantity}}</td>
+                <td>{{book.TopicId}}</td>
+                <td>{{book.PublisherId}}</td>
+                <td class="actions">
+                    <a (click)="editBook(book.BookId)">Edit</a> |
+                    <a (click)="viewDetail(book.BookId)">Details</a> |
+                    <a (click)="deleteBook(book.BookId)" class="delete-action">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

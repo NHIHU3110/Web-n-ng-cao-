@@ -49,7 +49,28 @@
                             <span class="meta-label">VALUE</span>
                             <span class="meta-value">{{book.Price | currency:'USD'}}</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">PUBLISHED</span>
+                            <span class="meta-value">{{book.PubDate | date}}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">QUANTITY</span>
+                            <span class="meta-value">{{book.Quantity}}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">PUBLISHER</span>
+                            <span class="meta-value">{{book.PublisherId}}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">TOPIC</span>
+                            <span class="meta-value">{{book.TopicId}}</span>
+                        </div>
                     </div>
+                </div>
+
+                <div class="art-description-full" style="margin-top: 20px; color: #ccc;">
+                    <h3>Description</h3>
+                    <p>{{book.Description}}</p>
                 </div>
 
                 <div class="art-actions">

@@ -48,6 +48,40 @@
                 </td>
             </tr>
             <tr>
+                <td>Description:</td>
+                <td>
+                    <textarea class="form-control" name="Description" id="Description" placeholder="Enter Description"
+                        [(ngModel)]="book.Description" rows="3"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Publish Date:</td>
+                <td>
+                    <input type="date" class="form-control" name="PubDate" id="PubDate" [(ngModel)]="book.PubDate" />
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td>
+                    <input type="number" class="form-control" name="Quantity" id="Quantity" placeholder="Enter Quantity"
+                        [(ngModel)]="book.Quantity" />
+                </td>
+            </tr>
+            <tr>
+                <td>Topic ID:</td>
+                <td>
+                    <input type="text" class="form-control" name="TopicId" id="TopicId" placeholder="e.g. CNTT"
+                        [(ngModel)]="book.TopicId" />
+                </td>
+            </tr>
+            <tr>
+                <td>Publisher ID:</td>
+                <td>
+                    <input type="text" class="form-control" name="PublisherId" id="PublisherId" placeholder="e.g. NXB01"
+                        [(ngModel)]="book.PublisherId" />
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" style="text-align: center; padding-top: 15px;">
                     <button class="submit-btn" (click)="postBook()">{{isEditMode ? 'Update Book' : 'Submit
                         Book'}}</button>

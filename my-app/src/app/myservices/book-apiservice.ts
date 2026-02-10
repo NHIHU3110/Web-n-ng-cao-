@@ -63,6 +63,17 @@ export class BookAPIservice {
   }
 
   handleError(error: HttpErrorResponse) {
-    return throwError(() => new Error(error.message))
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      if (error.error && error.error.message) {
+        errorMessage += `\nServer Details: ${error.error.message}`;
+      }
+    }
+    return throwError(() => new Error(errorMessage));
   }
 }

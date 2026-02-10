@@ -41,7 +41,10 @@ export class BookNewComponent implements OnInit {
     loadBooks() {
         this._service.getBooks().subscribe({
             next: (data) => { this.books = data },
-            error: (err) => { this.errMessage = err }
+            error: (err) => {
+                console.error("Error loading books:", err);
+                this.errMessage = err.message || "Could not load books.";
+            }
         })
     }
 
@@ -61,7 +64,6 @@ export class BookNewComponent implements OnInit {
                     this.books = data;
                     this.book = new Book(); // Reset form
                     alert("Book created successfully!");
-                    this._router.navigate(['/ex39']);
                 },
                 error: (err) => { this.errMessage = "Post Error: " + err.message }
             });

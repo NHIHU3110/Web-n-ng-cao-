@@ -22,6 +22,7 @@ import { Ex28Bitcoin } from './ex28-bitcoin/ex28-bitcoin';
 import { Books } from './books/books';
 import { BookDetail } from './book-detail/book-detail';
 import { BookNewComponent } from './book-new/book-new.component';
+import { Ex50Component } from './ex50/ex50.component';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
   { path: 'khach-hang-1', component: Listcustomer },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'ex41/:id', component: BookDetail },
   { path: 'ex43', component: BookNewComponent },
   { path: 'ex43/:id', component: BookNewComponent },
+  { path: 'ex50', component: Ex50Component },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng 
 
 ];
