@@ -1,0 +1,87 @@
+<div class="book-new-container">
+    <h2>{{isEditMode ? 'Edit Book' : 'Post New Book'}}</h2>
+    <p class="error-msg" *ngIf="errMessage">{{errMessage}}</p>
+
+    <div class="form-container">
+        <table class="form-table">
+            <tr>
+                <td>Book Id:</td>
+                <td>
+                    <input type="text" class="form-control" name="BookId" id="BookId" placeholder="Enter Book Id"
+                        [(ngModel)]="book.BookId" [disabled]="isEditMode" />
+                </td>
+            </tr>
+            <tr>
+                <td>Book Name:</td>
+                <td>
+                    <input type="text" class="form-control" name="BookName" id="BookName" placeholder="Enter Book Name"
+                        [(ngModel)]="book.BookName" />
+                </td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td>
+                    <input type="number" class="form-control" name="BookPrice" id="BookPrice" placeholder="Enter Price"
+                        [(ngModel)]="book.Price" />
+                </td>
+            </tr>
+            <tr>
+                <td>Image Filename:</td>
+                <td>
+                    <div class="image-input-group">
+                        <input type="text" class="form-control" name="Image" id="Image" placeholder="e.g. book1.png"
+                            [(ngModel)]="book.Image" />
+                        <input type="file" #fileInput style="display: none" (change)="onPickImage($event)" />
+                        <button class="pick-btn" (click)="fileInput.click()">
+                            <i class="bi bi-folder2-open"></i> Pick File
+                        </button>
+                    </div>
+                    <div class="image-preview" *ngIf="book.Image">
+                        <p>Preview (from Server 3001):</p>
+                        <div *ngIf="isUploading" class="upload-loader">Uploading...</div>
+                        <img *ngIf="!isUploading"
+                            [src]="'http://localhost:3001/image/' + (book.Image.startsWith('images/') ? book.Image.substring(7) : book.Image)"
+                            width="100px" onerror="this.src='assets/images/no-image.png'">
+                        <span class="tip" style="display: block; font-size: 11px; font-style: italic;">Auto-uploaded to
+                            Server 3001 when picked.</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding-top: 15px;">
+                    <button class="submit-btn" (click)="postBook()">{{isEditMode ? 'Update Book' : 'Submit
+                        Book'}}</button>
+                    <button *ngIf="isEditMode" class="delete-btn" (click)="deleteBook()"
+                        style="margin-left: 10px; background-color: #ff4444; color: white; border: none; padding: 10px 20px; cursor: pointer;">Delete
+                        Book</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="list-container">
+        <h3>Current Book List</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>BookId</th>
+                    <th>BookName</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{book.BookId}}</td>
+                    <td>{{book.BookName}}</td>
+                    <td>{{book.Price}}</td>
+                    <td>
+                        <!-- Point to port 3001 as per Ex49, strip 'images/' if present -->
+                        <img [src]="'http://localhost:3001/image/' + (book.Image.startsWith('images/') ? book.Image.substring(7) : book.Image)"
+                            width="50px" height="auto" onerror="this.src='assets/images/no-image.png'">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

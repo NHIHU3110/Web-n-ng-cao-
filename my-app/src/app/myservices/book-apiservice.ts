@@ -14,14 +14,50 @@ export class BookAPIservice {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("http://localhost:3000/books", requestOptions).pipe(
+    return this._http.get<any>("/books", requestOptions).pipe(
+      map(res => JSON.parse(res) as Array<IBook>),
+      retry(3),
+      catchError(this.handleError))
+  }
+
+  postBook(aBook: any): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "application/json;charset=utf-8");
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.post<any>("/books", JSON.stringify(aBook), requestOptions).pipe(
+      map(res => JSON.parse(res) as Array<IBook>),
+      retry(3),
+      catchError(this.handleError))
+  }
+
+  putBook(aBook: any): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "application/json;charset=utf-8");
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.put<any>("/books", JSON.stringify(aBook), requestOptions).pipe(
+      map(res => JSON.parse(res) as Array<IBook>),
+      retry(3),
+      catchError(this.handleError))
+  }
+
+  deleteBook(bookId: string): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "application/json;charset=utf-8");
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.delete<any>("/books/" + bookId, requestOptions).pipe(
       map(res => JSON.parse(res) as Array<IBook>),
       retry(3),
       catchError(this.handleError))
   }
 
   getBookDetails(bookId: string): Observable<any> {
-    return this._http.get<any>("http://localhost:3000/books/" + bookId).pipe(
+    return this._http.get<any>("/books/" + bookId).pipe(
       retry(3),
       catchError(this.handleError))
   }

@@ -27,7 +27,7 @@
         "context": [
             "/books"
         ],
-        "target": "http://127.0.0.1:3000",
+        "target": "http://localhost:3000",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug"
@@ -37,7 +37,7 @@
             "/upload",
             "/api"
         ],
-        "target": "http://127.0.0.1:3001",
+        "target": "http://localhost:3001",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug"

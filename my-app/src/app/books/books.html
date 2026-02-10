@@ -21,7 +21,8 @@
                     <div class="art-decoration"></div>
 
                     <div class="art-canvas">
-                        <img [src]="'http://localhost:3000/' + book.Image" [alt]="book.BookName" class="art-image">
+                        <img [src]="'http://localhost:3001/image/' + (book.Image.startsWith('images/') ? book.Image.substring(7) : book.Image)"
+                            [alt]="book.BookName" class="art-image">
                         <div class="art-reveal">
                             <span class="art-id">REFERENCE // 0{{book.BookId}}</span>
                         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookAPIservice } from '../myservices/book-apiservice';
 
 @Component({
@@ -12,7 +12,7 @@ export class BookDetail implements OnInit {
   book: any;
   errMessage: string = '';
 
-  constructor(private _route: ActivatedRoute, private _service: BookAPIservice) { }
+  constructor(private _route: ActivatedRoute, private _router: Router, private _service: BookAPIservice) { }
 
   ngOnInit() {
     console.log('ngOnInit được gọi!');
@@ -37,5 +37,17 @@ export class BookDetail implements OnInit {
         this.errMessage = err;
       }
     });
+  }
+
+  deleteBook() {
+    if (confirm("Are you sure you want to delete this book?")) {
+      this._service.deleteBook(this.book.BookId).subscribe({
+        next: (data) => {
+          alert("Book deleted successfully!");
+          this._router.navigate(['/ex39']);
+        },
+        error: (err) => { this.errMessage = "Delete Error: " + err.message }
+      })
+    }
   }
 }

@@ -18,7 +18,8 @@
             <!-- Left Side: Canvas Image -->
             <div class="art-canvas-container">
                 <div class="art-canvas">
-                    <img [src]="'http://localhost:3000/' + book.Image" [alt]="book.BookName" class="art-image">
+                    <img [src]="'http://localhost:3001/image/' + (book.Image.startsWith('images/') ? book.Image.substring(7) : book.Image)"
+                        [alt]="book.BookName" class="art-image">
                     <div class="art-reveal">
                         <span class="art-id">REFERENCE // {{book.BookId}}</span>
                     </div>
@@ -54,6 +55,14 @@
                 <div class="art-actions">
                     <button class="museum-back-btn" routerLink="/ex39">
                         <i class="bi bi-arrow-left"></i> RETURN TO GALLERY
+                    </button>
+                    <button class="museum-back-btn" [routerLink]="['/ex43', book.BookId]"
+                        style="margin-left: 10px; background-color: #4CAF50;">
+                        <i class="bi bi-pencil"></i> EDIT
+                    </button>
+                    <button class="museum-back-btn" (click)="deleteBook()"
+                        style="margin-left: 10px; background-color: #f44336;">
+                        <i class="bi bi-trash"></i> DELETE
                     </button>
                 </div>
             </div>
