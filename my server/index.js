@@ -90,12 +90,13 @@ app.post("/books", (req, res) => {
 
     // Simple validation
     if (!newBook.BookId || !newBook.BookName) {
-        return res.status(400).send({ message: "BookId and BookName are required" });
+        console.log("Validation failed. Received:", newBook);
+        return res.status(400).send({ message: "BookId and BookName are required. Received: " + JSON.stringify(newBook) });
     }
 
     // Check for duplicate ID
     if (database.some(b => b.BookId === newBook.BookId)) {
-        return res.status(400).send({ message: "BookId already exists" });
+        return res.status(400).send({ message: `BookId '${newBook.BookId}' already exists.` });
     }
 
     database.push(newBook);

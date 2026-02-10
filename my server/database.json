@@ -3,42 +3,83 @@
     "BookId": "b1",
     "BookName": "Kỹ thuật lập trình cơ bản",
     "Price": 70,
-    "Image": "images/img7993-17086753132761104772518.jpg.webp"
+    "Image": "images/img7993-17086753132761104772518.jpg.webp",
+    "Description": "Sách hướng dẫn lập trình cơ bản cho người mới bắt đầu.",
+    "PubDate": "2024-01-15",
+    "Quantity": 100,
+    "PublisherId": "NXB01",
+    "TopicId": "CNTT"
   },
   {
     "BookId": "b2",
     "BookName": "Kỹ thuật lập trình nâng cao",
     "Price": 100,
-    "Image": "images/n9hTkOhYC-Ow_nNOlHNjkH-NVYB4LjiwVbgmQgU2W3I.jpg.webp"
+    "Image": "images/n9hTkOhYC-Ow_nNOlHNjkH-NVYB4LjiwVbgmQgU2W3I.jpg.webp",
+    "Description": "Các kỹ thuật lập trình nâng cao và tối ưu hóa mã nguồn.",
+    "PubDate": "2024-02-20",
+    "Quantity": 50,
+    "PublisherId": "NXB01",
+    "TopicId": "CNTT"
   },
   {
     "BookId": "b3",
     "BookName": "Máy học cơ bản",
     "Price": 200,
-    "Image": "images/bob-brewer-daC7ji1EMHM-unsplash.jpg"
+    "Image": "images/bob-brewer-daC7ji1EMHM-unsplash.jpg",
+    "Description": "Giới thiệu về Machine Learning và các thuật toán cơ bản.",
+    "PubDate": "2024-03-10",
+    "Quantity": 30,
+    "PublisherId": "NXB02",
+    "TopicId": "AI"
   },
   {
     "BookId": "b4",
     "BookName": "Máy học nâng cao",
     "Price": 300,
-    "Image": "images/capybara-15-jpg-1735886486-1735893396-1735893768.jpg.webp"
+    "Image": "images/capybara-15-jpg-1735886486-1735893396-1735893768.jpg.webp",
+    "Description": "Deep Learning và các mô hình mạng nơ-ron phức tạp.",
+    "PubDate": "2024-04-05",
+    "Quantity": 20,
+    "PublisherId": "NXB02",
+    "TopicId": "AI"
   },
   {
     "BookId": "b5",
     "BookName": "Lập trình Robot cơ bản",
     "Price": 250,
-    "Image": "images/chim-hong-hac3-1491813259646.jpg.webp"
+    "Image": "images/chim-hong-hac3-1491813259646.jpg.webp",
+    "Description": "Hướng dẫn lập trình điều khiển Robot cơ bản.",
+    "PubDate": "2024-05-12",
+    "Quantity": 15,
+    "PublisherId": "NXB03",
+    "TopicId": "ROBOT"
   },
   {
     "BookId": "b6",
     "BookName": "Xứ sở miên man",
     "Price": 100,
-    "Image": "xusomienman.webp"
+    "Image": "xusomienman.webp",
+    "Description": "Một cuốn tiểu thuyết giả tưởng đầy mê hoặc.",
+    "PubDate": "2023-11-01",
+    "Quantity": 75,
+    "PublisherId": "NXB04",
+    "TopicId": "VANHOC"
   },
   {
     "BookId": "b7",
-    "BookName": "Hoàng tử bé ",
+    "BookName": "Hoang tu be",
     "Price": 80,
     "Image": "hoangtube.jpeg"
+  },
+  {
+    "BookId": "b8",
+    "BookName": "Cam on nguoi lon",
+    "Price": 120,
+    "Image": "camonnguoilon.jpg",
+    "Description": "1 tựa sách của Nguyễn Nhật Ánh ",
+    "PubDate": "2026-02-10",
+    "Quantity": 1000,
+    "PublisherId": "NXB01",
+    "TopicId": "CONL"
   }
 ]
