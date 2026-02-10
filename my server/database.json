@@ -1,0 +1,44 @@
+[
+  {
+    "BookId": "b1",
+    "BookName": "Kỹ thuật lập trình cơ bản",
+    "Price": 70,
+    "Image": "images/img7993-17086753132761104772518.jpg.webp"
+  },
+  {
+    "BookId": "b2",
+    "BookName": "Kỹ thuật lập trình nâng cao",
+    "Price": 100,
+    "Image": "images/n9hTkOhYC-Ow_nNOlHNjkH-NVYB4LjiwVbgmQgU2W3I.jpg.webp"
+  },
+  {
+    "BookId": "b3",
+    "BookName": "Máy học cơ bản",
+    "Price": 200,
+    "Image": "images/bob-brewer-daC7ji1EMHM-unsplash.jpg"
+  },
+  {
+    "BookId": "b4",
+    "BookName": "Máy học nâng cao",
+    "Price": 300,
+    "Image": "images/capybara-15-jpg-1735886486-1735893396-1735893768.jpg.webp"
+  },
+  {
+    "BookId": "b5",
+    "BookName": "Lập trình Robot cơ bản",
+    "Price": 250,
+    "Image": "images/chim-hong-hac3-1491813259646.jpg.webp"
+  },
+  {
+    "BookId": "b6",
+    "BookName": "Xứ sở miên man",
+    "Price": 100,
+    "Image": "xusomienman.webp"
+  },
+  {
+    "BookId": "b7",
+    "BookName": "Hoàng tử bé ",
+    "Price": 80,
+    "Image": "hoangtube.jpeg"
+  }
+]
