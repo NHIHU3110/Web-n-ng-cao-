@@ -1,0 +1,46 @@
+<div class="fashion-container">
+    <div class="header-section">
+        <h1 class="page-title">Fashion Collection</h1>
+        <p class="subtitle">Discover our exclusive MongoDB collections</p>
+    </div>
+
+    <!-- Error Message Display -->
+    <div class="error-banner" *ngIf="errMessage">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span>{{ errMessage }}</span>
+    </div>
+
+    <!-- Fashion Grid -->
+    <div class="fashion-grid" *ngIf="fashions && fashions.length > 0">
+        <div class="fashion-card" *ngFor="let fashion of fashions">
+            <div class="card-image-wrapper">
+                <img [src]="fashion.fashion_image || 'assets/images/placeholder.jpg'"
+                    alt="{{ fashion.fashion_subject }}" class="fashion-image">
+                <div class="style-badge">{{ fashion.style }}</div>
+            </div>
+
+            <div class="card-content">
+                <div class="card-header">
+                    <h3 class="fashion-subject">{{ fashion.fashion_subject }}</h3>
+                    <span class="fashion-id" title="Product ID">#{{ fashion._id | slice:-6 }}</span>
+                </div>
+
+                <p class="fashion-detail">{{ fashion.fashion_detail }}</p>
+
+                <div class="card-footer">
+                    <button class="view-btn">
+                        <span>View Details</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="fashions && fashions.length === 0">
+        <i class="bi bi-inbox empty-icon"></i>
+        <h3>No fashions found</h3>
+        <p>Your MongoDB collection is currently empty.</p>
+    </div>
+</div>

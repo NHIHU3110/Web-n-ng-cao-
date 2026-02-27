@@ -23,6 +23,7 @@ import { Books } from './books/books';
 import { BookDetail } from './book-detail/book-detail';
 import { BookNewComponent } from './book-new/book-new.component';
 import { Ex50Component } from './ex50/ex50.component';
+import { FashionComponent } from './fashion/fashion';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About },
   { path: 'khach-hang-1', component: Listcustomer },
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path: 'ex43', component: BookNewComponent },
   { path: 'ex43/:id', component: BookNewComponent },
   { path: 'ex50', component: Ex50Component },
-  { path: '**', component: Notfound }, // luôn để dòng cuối cùng 
+  { path: 'fashions', component: FashionComponent },
+  { path: '**', component: Notfound }, // luôn để dòng cuối cùng
 
 ];
 

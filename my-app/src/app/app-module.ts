@@ -37,13 +37,14 @@ import { BookDetail } from './book-detail/book-detail';
 import { FileUpload } from './file-upload/file-upload';
 import { BookNewComponent } from './book-new/book-new.component';
 import { Ex50Component } from './ex50/ex50.component';
+import { FashionComponent } from './fashion/fashion';
 
 @NgModule({
   declarations: [
     App, About, Contact, Listcustomer, Listcustomer2, Listcustomer3, Notfound, Listproduct, Productdetail,
     Ex13detail, Ex13, FakeProduct, Ex27, Ex18, Ex19Product, Ex19ListProduct, Ex19ServiceProduct,
     Ex21Login, Ex22Course, Ex24Math, Ex28Bitcoin,
-    Learnbiding, Ptb1, Ptb2, Learndirective, LunarYear, Customerdetail, Ex14, Books, BookDetail, FileUpload, BookNewComponent, Ex50Component
+    Learnbiding, Ptb1, Ptb2, Learndirective, LunarYear, Customerdetail, Ex14, Books, BookDetail, FileUpload, BookNewComponent, Ex50Component, FashionComponent
   ],
   imports: [
     BrowserModule,
