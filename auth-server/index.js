@@ -13,8 +13,10 @@ const collectionName = 'Users';
 const transactionCollectionName = 'Transactions';
 const USERS_FILE = path.join(__dirname, 'users.json');
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json());
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 let db, usersCollection, transactionsCollection;
 
@@ -221,3 +223,30 @@ app.get('/admin/customers', async (req, res) => {
 });
 
 // ... (existing code)
+
+// ============================================
+// Exercise 61: Cookie Login Save/Read
+// ============================================
+
+// Save login cookie after successful login
+app.post('/save-login-cookie', (req, res) => {
+    const { email, password } = req.body;
+    res.cookie("saved_email", email, { maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
+    res.cookie("saved_password", password, { maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.json({ message: "Cookie saved" });
+});
+
+// Read saved login cookie
+app.get('/read-login-cookie', (req, res) => {
+    res.json({
+        email: req.cookies.saved_email || "",
+        password: req.cookies.saved_password || ""
+    });
+});
+
+// Clear login cookie
+app.get('/clear-login-cookie', (req, res) => {
+    res.clearCookie("saved_email");
+    res.clearCookie("saved_password");
+    res.json({ message: "Login cookies cleared" });
+});

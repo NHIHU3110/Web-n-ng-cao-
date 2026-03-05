@@ -65,7 +65,6 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [App]
 })
