@@ -1,0 +1,29 @@
+<div class="admin-login-container">
+    <div class="login-card">
+        <div class="header">
+            <i class="bi bi-person-badge-fill"></i>
+            <h2>ADMIN PORTAL</h2>
+            <p>Đăng nhập hệ thống quản lý</p>
+        </div>
+
+        <div class="form-group">
+            <label>Email Admin</label>
+            <input type="email" [(ngModel)]="email" placeholder="admin@fashion.com">
+        </div>
+
+        <div class="form-group">
+            <label>Mật khẩu</label>
+            <input type="password" [(ngModel)]="pass" placeholder="••••••••">
+        </div>
+
+        <div class="error-msg" *ngIf="error">
+            {{ error }}
+        </div>
+
+        <button class="login-btn" (click)='onLogin()'>ĐĂNG NHẬP QUẢN TRỊ</button>
+
+        <div class="footer">
+            <a routerLink="/ex21-login">Quay lại trang khách hàng</a>
+        </div>
+    </div>
+</div>

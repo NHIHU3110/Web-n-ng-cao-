@@ -1,0 +1,162 @@
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.error-banner {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 4rem;
+    color: #6b7280;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.detail-card {
+    display: flex;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.image-section {
+    flex: 1;
+    min-width: 400px;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.badge {
+    display: inline-block;
+    background: #eff6ff;
+    color: #3b82f6;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.id-banner {
+    background-color: #f3f4f6;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    color: #4b5563;
+    margin-bottom: 30px;
+}
+
+.description {
+    flex-grow: 1;
+    margin-bottom: 40px;
+}
+
+.description h3 {
+    font-size: 1.2rem;
+    color: #374151;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 8px;
+}
+
+.description p {
+    color: #4b5563;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.actions {
+    margin-top: auto;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #2563eb;
+    transform: translateX(-3px);
+}
+
+@media (max-width: 768px) {
+    .detail-card {
+        flex-direction: column;
+    }
+
+    .image-section {
+        min-width: 100%;
+        height: 300px;
+    }
+}

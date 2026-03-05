@@ -38,13 +38,21 @@ import { FileUpload } from './file-upload/file-upload';
 import { BookNewComponent } from './book-new/book-new.component';
 import { Ex50Component } from './ex50/ex50.component';
 import { FashionComponent } from './fashion/fashion';
+import { FashionDetail } from './fashion-detail/fashion-detail';
+import { RegisterComponent } from './register/register';
+import { CheckoutComponent } from './checkout/checkout';
+import { AdminLoginComponent } from './admin-login/admin-login';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard';
+import { BaseChartDirective } from 'ng2-charts';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     App, About, Contact, Listcustomer, Listcustomer2, Listcustomer3, Notfound, Listproduct, Productdetail,
     Ex13detail, Ex13, FakeProduct, Ex27, Ex18, Ex19Product, Ex19ListProduct, Ex19ServiceProduct,
     Ex21Login, Ex22Course, Ex24Math, Ex28Bitcoin,
-    Learnbiding, Ptb1, Ptb2, Learndirective, LunarYear, Customerdetail, Ex14, Books, BookDetail, FileUpload, BookNewComponent, Ex50Component, FashionComponent
+    Learnbiding, Ptb1, Ptb2, Learndirective, LunarYear, Customerdetail, Ex14, Books, BookDetail, FileUpload, BookNewComponent, Ex50Component, FashionComponent, FashionDetail, RegisterComponent, CheckoutComponent,
+    AdminLoginComponent, AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +60,12 @@ import { FashionComponent } from './fashion/fashion';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BaseChartDirective
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [App]
 })

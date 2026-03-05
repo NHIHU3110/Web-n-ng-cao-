@@ -10,13 +10,14 @@ export class FashionApiService {
     constructor(private _http: HttpClient) { }
 
     getFashions(): Observable<any> {
-        const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
-        const requestOptions: Object = {
-            headers: headers,
-            responseType: "text"
-        }
-        return this._http.get<any>("/fashions", requestOptions).pipe(
-            map(res => JSON.parse(res) as Array<Fashion>),
+        return this._http.get<any>("/fashions").pipe(
+            retry(3),
+            catchError(this.handleError)
+        )
+    }
+
+    getFashion(id: string): Observable<any> {
+        return this._http.get<any>("/fashions/" + id).pipe(
             retry(3),
             catchError(this.handleError)
         )

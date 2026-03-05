@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BookAPIservice } from '../myservices/book-apiservice';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,11 @@ export class Ex50Component implements OnInit {
     books: any;
     errMessage: string = '';
 
-    constructor(private _service: BookAPIservice, private _router: Router) { }
+    constructor(
+        private _service: BookAPIservice,
+        private _router: Router,
+        private cdr: ChangeDetectorRef
+    ) { }
 
     ngOnInit() {
         this.loadBooks();
@@ -20,7 +24,10 @@ export class Ex50Component implements OnInit {
 
     loadBooks() {
         this._service.getBooks().subscribe({
-            next: (data) => { this.books = data },
+            next: (data) => {
+                this.books = data;
+                this.cdr.detectChanges();
+            },
             error: (err) => { this.errMessage = err }
         })
     }

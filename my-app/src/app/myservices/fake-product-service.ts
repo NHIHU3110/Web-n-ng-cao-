@@ -10,13 +10,7 @@ export class FakeProductService {
   private _url: string = "https://fakestoreapi.com/products"
   constructor(private _http: HttpClient) { }
   getFakeProductData(): Observable<any> {
-    const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
-    const requestOptions: Object = {
-      headers: headers,
-      responseType: "text"
-    }
-    return this._http.get<any>(this._url, requestOptions).pipe(
-      map(res => JSON.parse(res) as Array<IFakeProduct>),
+    return this._http.get<any>(this._url).pipe(
       retry(3),
       catchError(this.handleError))
   }

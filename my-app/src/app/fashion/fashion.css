@@ -27,6 +27,61 @@
     font-weight: 400;
 }
 
+/* Search Bar */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 30px;
+    padding: 8px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    border-color: #2b5876;
+    box-shadow: 0 6px 20px rgba(43, 88, 118, 0.15);
+    transform: translateY(-2px);
+}
+
+.search-icon {
+    color: #6c757d;
+    font-size: 1.2rem;
+    margin-right: 12px;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 8px 0;
+    color: #2d3436;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #adb5bd;
+}
+
+.clear-icon {
+    color: #adb5bd;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.clear-icon:hover {
+    color: #ff4757;
+}
+
 /* Error Banner */
 .error-banner {
     background: rgba(255, 71, 87, 0.1);
@@ -58,6 +113,10 @@
     border: 1px solid rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
+}
+
+.clickable-card {
+    cursor: pointer;
 }
 
 .fashion-card:hover {

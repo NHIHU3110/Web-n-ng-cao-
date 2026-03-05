@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookAPIservice } from '../myservices/book-apiservice';
 
@@ -12,7 +12,12 @@ export class BookDetail implements OnInit {
   book: any;
   errMessage: string = '';
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _service: BookAPIservice) { }
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _service: BookAPIservice,
+    private _cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     console.log('ngOnInit được gọi!');
@@ -31,10 +36,12 @@ export class BookDetail implements OnInit {
       next: (data: any) => {
         console.log('Dữ liệu nhận được từ API:', data);
         this.book = data;
+        this._cdr.detectChanges();
       },
       error: (err: any) => {
         console.log('Lỗi khi gọi API:', err);
         this.errMessage = err;
+        this._cdr.detectChanges();
       }
     });
   }

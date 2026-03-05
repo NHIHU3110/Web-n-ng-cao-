@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BookAPIservice } from '../myservices/book-apiservice';
 import { Book } from '../myclass/book';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +21,8 @@ export class BookNewComponent implements OnInit {
         private _service: BookAPIservice,
         private http: HttpClient,
         private _route: ActivatedRoute,
-        private _router: Router
+        private _router: Router,
+        private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit(): void {
@@ -31,7 +32,10 @@ export class BookNewComponent implements OnInit {
             if (id) {
                 this.isEditMode = true;
                 this._service.getBookDetails(id).subscribe({
-                    next: (data) => { this.book = data; },
+                    next: (data) => {
+                        this.book = data;
+                        this.cdr.detectChanges();
+                    },
                     error: (err) => { this.errMessage = err; }
                 });
             }
@@ -40,7 +44,10 @@ export class BookNewComponent implements OnInit {
 
     loadBooks() {
         this._service.getBooks().subscribe({
-            next: (data) => { this.books = data },
+            next: (data) => {
+                this.books = data;
+                this.cdr.detectChanges();
+            },
             error: (err) => {
                 console.error("Error loading books:", err);
                 this.errMessage = err.message || "Could not load books.";

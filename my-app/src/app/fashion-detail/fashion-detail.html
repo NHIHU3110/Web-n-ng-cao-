@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="error-banner" *ngIf="errMessage">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span>{{ errMessage }}</span>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section" style="margin-bottom: 2rem; display: flex; justify-content: center;">
+        <div class="search-box"
+            style="display: flex; gap: 10px; width: 100%; max-width: 500px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="flex-grow: 1; position: relative; display: flex; align-items: center;">
+                <i class="bi bi-search" style="position: absolute; left: 15px; color: #6c757d;"></i>
+                <input type="text" #fashionIdInput placeholder="Search Fashion by ID..."
+                    style="width: 100%; border: none; outline: none; padding: 10px 10px 10px 40px; font-size: 1rem; border-radius: 4px;"
+                    (keyup.enter)="getFashion(fashionIdInput.value)">
+            </div>
+            <button (click)="getFashion(fashionIdInput.value)"
+                style="background: #2b5876; color: white; border: none; padding: 0 20px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+                SEARCH
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="!fashion && !errMessage" class="loading-state">
+        <div class="spinner" *ngIf="isSearching"></div>
+        <p *ngIf="isSearching">Loading fashion details...</p>
+        <p *ngIf="!isSearching">Please enter a Fashion ID to search.</p>
+    </div>
+
+    <div class="detail-card" *ngIf="fashion">
+        <div class="image-section">
+            <img [src]="fashion.fashion_image || 'assets/images/placeholder.jpg'" alt="{{ fashion.fashion_subject }}">
+        </div>
+
+        <div class="info-section">
+            <div class="header">
+                <h1>{{ fashion.fashion_subject }}</h1>
+                <span class="badge">{{ fashion.style }}</span>
+            </div>
+
+            <div class="id-banner">
+                ID: <span class="fw-bold">{{ fashion._id }}</span>
+            </div>
+
+            <div class="description">
+                <h3>Description</h3>
+                <p>{{ fashion.fashion_detail }}</p>
+            </div>
+
+            <div class="actions">
+                <button class="back-btn" (click)="goBack()">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Back to Collection</span>
+                </button>
+                <button class="buy-btn" (click)="buyOnMomo()"
+                    style="background: #2563eb; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: all 0.2s;">
+                    <i class="bi bi-cart-check-fill" style="font-size: 1.2rem;"></i>
+                    MUA NGAY
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

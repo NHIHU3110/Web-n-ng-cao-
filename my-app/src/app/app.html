@@ -1,4 +1,4 @@
-<div class="navbar-container">
+<div class="navbar-container" *ngIf="isAuthenticated()">
     <nav class="nav-main">
         <ul class="nav-list">
             <li class="nav-item">
@@ -73,8 +73,6 @@
                     <li class="dropdown-item"><a routerLink="/ex41" class="dropdown-link">Ex41: Book Detail</a></li>
                     <li class="dropdown-item"><a routerLink="/ex43" class="dropdown-link">Ex43: Create Book</a></li>
                     <li class="dropdown-item"><a routerLink="/ex50" class="dropdown-link">Ex50: Book Management</a></li>
-                    <li class="dropdown-item"><a routerLink="/fashions" class="dropdown-link">Ex53: Fashion List</a>
-                    </li>
                 </ul>
             </li>
 
@@ -89,27 +87,29 @@
                     <i class="bi bi-cloud-upload"></i> UPLOAD
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a routerLink="/fashions" class="nav-link" routerLinkActive="active-link">
+                    <i class="bi bi-database"></i> mongoDB
+                </a>
+            </li>
+
+            <li class="nav-item logout-btn">
+                <a href="javascript:void(0)" (click)="onLogout()" class="nav-link text-danger">
+                    <i class="bi bi-box-arrow-right"></i> LOGOUT
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
 
-<!-- <app-ex18></app-ex18> -->
-<!-- <app-ex13></app-ex13>  -->
-<!-- <app-ex14></app-ex14> -->
-<!-- <p>Ex 19 menu</p> -->
-<!-- <div class="nav">
-    <a routerLink="/ex19-product" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      Ex19 Product
-    </a>
-  
-    <a routerLink="/ex19-list-product" routerLinkActive="active">
-      Ex19 List Product
-    </a>
-  
-    <a routerLink="/ex19-service-product" routerLinkActive="active">
-      Ex19 Service Product
-    </a>
-  </div>
-   -->
-<!-- <app-lunar-year></app-lunar-year> -->
 <router-outlet></router-outlet>
+
+<!-- Floating Admin Link -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <a routerLink="/admin-login"
+        style="background: #1e293b; color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+        <i class="bi bi-shield-lock-fill"></i>
+        Hệ thống Quản trị
+    </a>
+</div>

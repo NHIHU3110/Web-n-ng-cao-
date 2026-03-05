@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../myservices/auth.service';
 
 @Component({
   selector: 'app-ex21-login',
@@ -15,7 +16,11 @@ export class Ex21Login implements OnInit {
 
   loginForm: any;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
@@ -34,7 +39,7 @@ export class Ex21Login implements OnInit {
           password: obj.password || '',
           remember: true
         });
-      } catch {}
+      } catch { }
     }
   }
 
@@ -51,27 +56,22 @@ export class Ex21Login implements OnInit {
 
     const data = this.loginForm.value;
 
-    // 1) hiển thị JSON string dưới button (đúng yêu cầu)
-    this.messageJson = JSON.stringify(data);
+    this.authService.login(data).subscribe({
+      next: (res) => {
+        // Remember me (LocalStorage)
+        if (data.remember) {
+          localStorage.setItem('LOGIN_INFO', JSON.stringify({ email: data.email, password: data.password }));
+        } else {
+          localStorage.removeItem('LOGIN_INFO');
+        }
 
-    // 2) Remember me (LocalStorage)
-    if (data.remember) {
-      localStorage.setItem('LOGIN_INFO', JSON.stringify({ email: data.email, password: data.password }));
-    } else {
-      localStorage.removeItem('LOGIN_INFO');
-    }
-
-    // 3) Simulation login đúng thì navigate
-    // Bạn đổi email/password đúng theo ý bạn (ví dụ thầy cho)
-    const CORRECT_EMAIL = 'admin@gmail.com';
-    const CORRECT_PASS = '12345';
-
-    if (data.email === CORRECT_EMAIL && data.password === CORRECT_PASS) {
-      // navigate qua 1 component bất kỳ (ví dụ ex19-product)
-      this.router.navigateByUrl('/ex19-product');
-    } else {
-      this.errorMsg = 'Login failed (wrong email/password).';
-    }
+        this.messageJson = JSON.stringify(res.user);
+        this.router.navigateByUrl('/fashions'); // Navigate to a main page after login
+      },
+      error: (err) => {
+        this.errorMsg = err.error.message || 'Login failed.';
+      }
+    });
   }
 
   get f() {

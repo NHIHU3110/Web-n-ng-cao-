@@ -1,0 +1,80 @@
+<div class="checkout-container">
+    <div class="checkout-card" *ngIf="order && !transactionId">
+        <div class="checkout-header">
+            <i class="bi bi-truck"></i>
+            <h2>XÁC NHẬN ĐẶT HÀNG (Ship COD)</h2>
+        </div>
+
+        <div class="payment-method-badge">
+            <i class="bi bi-cash"></i>
+            <span>Thanh toán khi nhận hàng (COD)</span>
+        </div>
+
+        <div class="order-summary">
+            <h3>Tóm tắt đơn hàng</h3>
+            <div class="info-row">
+                <span>Sản phẩm:</span>
+                <strong>{{ order.fashion_subject }}</strong>
+            </div>
+            <div class="info-row price">
+                <span>Tổng thanh toán:</span>
+                <strong>150.000đ</strong>
+            </div>
+        </div>
+
+        <div class="customer-info-form">
+            <h3>Thông tin giao hàng</h3>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" [(ngModel)]="customerInfo.fullName" placeholder="Nhập họ và tên">
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" [(ngModel)]="customerInfo.phoneNumber" placeholder="Nhập số điện thoại">
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ nhận hàng</label>
+                <textarea [(ngModel)]="customerInfo.address" rows="3" placeholder="Nhập địa chỉ đầy đủ"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Ghi chú (tùy chọn)</label>
+                <input type="text" [(ngModel)]="customerInfo.notes" placeholder="Ví dụ: Giao giờ hành chính">
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="confirm-btn" [disabled]="isProcessing" (click)="onConfirmPayment()">
+                {{ isProcessing ? 'ĐANG XỬ LÝ...' : 'ĐẶT HÀNG NGAY' }}
+            </button>
+            <button class="cancel-btn" (click)="cancelCheckout()">HỦY BỎ</button>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <!-- Success Screen -->
+    <div class="success-card checkout-card" *ngIf="transactionId">
+        <div class="success-icon">
+            <i class="bi bi-check-circle-fill"></i>
+        </div>
+        <h2>THANH TOÁN THÀNH CÔNG!</h2>
+        <p>Cảm ơn bạn đã mua sắm tại cửa hàng.</p>
+
+        <div class="transaction-detail">
+            <div class="info-row">
+                <span>Khách hàng:</span>
+                <strong>{{ customerInfo.fullName }}</strong>
+            </div>
+            <div class="info-row">
+                <span>Số tiền COD:</span>
+                <strong>150.000đ</strong>
+            </div>
+            <div class="info-row">
+                <span>Mã đơn hàng:</span>
+                <strong class="tid">{{ transactionId }}</strong>
+            </div>
+            <p class="db-hint">(Dữ liệu đã được lưu trữ an toàn trong MongoDB `Transactions` database)</p>
+        </div>
+
+        <button class="confirm-btn" (click)="cancelCheckout()">TIẾP TỤC MUA SẮM</button>
+    </div>
+</div>

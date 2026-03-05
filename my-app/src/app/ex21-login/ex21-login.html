@@ -29,5 +29,16 @@
 
     <p class="err" *ngIf="errorMsg">{{ errorMsg }}</p>
     <div class="json" *ngIf="messageJson">{{ messageJson }}</div>
+
+    <div class="footer" style="text-align: center; margin-top: 2rem; font-size: 0.95rem; color: #64748b;">
+      <div style="margin-bottom: 12px;">
+        Don't have an account? <a routerLink="/register"
+          style="color: #4f46e5; text-decoration: none; font-weight: 700;">Register here</a>
+      </div>
+      <div>
+        Are you an administrator? <a routerLink="/admin-login"
+          style="color: #1e293b; text-decoration: underline; font-weight: 600;">Admin Login</a>
+      </div>
+    </div>
   </div>
 </div>

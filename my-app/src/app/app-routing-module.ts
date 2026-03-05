@@ -24,32 +24,43 @@ import { BookDetail } from './book-detail/book-detail';
 import { BookNewComponent } from './book-new/book-new.component';
 import { Ex50Component } from './ex50/ex50.component';
 import { FashionComponent } from './fashion/fashion';
+import { FashionDetail } from './fashion-detail/fashion-detail';
+import { RegisterComponent } from './register/register';
+import { CheckoutComponent } from './checkout/checkout';
+import { AdminLoginComponent } from './admin-login/admin-login';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard';
+import { authGuard } from './myservices/auth.guard';
 const routes: Routes = [
-  { path: 'gioi-thieu', component: About },
-  { path: 'khach-hang-1', component: Listcustomer },
-  { path: 'khach-hang-2', component: Listcustomer2 },
-  { path: 'khach-hang-3', component: Listcustomer3 },
-  { path: 'san-pham-1', component: Listproduct },
-  { path: 'san-pham-1/:id', component: Productdetail },
-  { path: 'ex13/:id', component: Ex13detail },
-  { path: 'ex26', component: FakeProduct },
-  { path: 'ex27', component: Ex27 },
-  { path: 'ex19-product', component: Ex19Product },
-  { path: 'ex19-list-product', component: Ex19ListProduct },
-  { path: 'ex19-service-product', component: Ex19ServiceProduct },
-  { path: 'ex18', component: Ex18 },
+  { path: 'gioi-thieu', component: About, canActivate: [authGuard] },
+  { path: 'khach-hang-1', component: Listcustomer, canActivate: [authGuard] },
+  { path: 'khach-hang-2', component: Listcustomer2, canActivate: [authGuard] },
+  { path: 'khach-hang-3', component: Listcustomer3, canActivate: [authGuard] },
+  { path: 'san-pham-1', component: Listproduct, canActivate: [authGuard] },
+  { path: 'san-pham-1/:id', component: Productdetail, canActivate: [authGuard] },
+  { path: 'ex13/:id', component: Ex13detail, canActivate: [authGuard] },
+  { path: 'ex26', component: FakeProduct, canActivate: [authGuard] },
+  { path: 'ex27', component: Ex27, canActivate: [authGuard] },
+  { path: 'ex19-product', component: Ex19Product, canActivate: [authGuard] },
+  { path: 'ex19-list-product', component: Ex19ListProduct, canActivate: [authGuard] },
+  { path: 'ex19-service-product', component: Ex19ServiceProduct, canActivate: [authGuard] },
+  { path: 'ex18', component: Ex18, canActivate: [authGuard] },
   { path: 'ex21-login', component: Ex21Login },
-  { path: 'ex22-course', component: Ex22Course },
-  { path: 'ex24-math', component: Ex24Math },
-  { path: 'ex28-bitcoin', component: Ex28Bitcoin },
+  { path: 'register', component: RegisterComponent },
+  { path: 'ex22-course', component: Ex22Course, canActivate: [authGuard] },
+  { path: 'ex24-math', component: Ex24Math, canActivate: [authGuard] },
+  { path: 'ex28-bitcoin', component: Ex28Bitcoin, canActivate: [authGuard] },
   { path: '', redirectTo: 'ex21-login', pathMatch: 'full' },
-  { path: 'ex39', component: Books },
-  { path: 'ex41', component: BookDetail },
-  { path: 'ex41/:id', component: BookDetail },
-  { path: 'ex43', component: BookNewComponent },
-  { path: 'ex43/:id', component: BookNewComponent },
-  { path: 'ex50', component: Ex50Component },
-  { path: 'fashions', component: FashionComponent },
+  { path: 'ex39', component: Books, canActivate: [authGuard] },
+  { path: 'ex41', component: BookDetail, canActivate: [authGuard] },
+  { path: 'ex41/:id', component: BookDetail, canActivate: [authGuard] },
+  { path: 'ex43', component: BookNewComponent, canActivate: [authGuard] },
+  { path: 'ex43/:id', component: BookNewComponent, canActivate: [authGuard] },
+  { path: 'ex50', component: Ex50Component, canActivate: [authGuard] },
+  { path: 'fashions', component: FashionComponent, canActivate: [authGuard] },
+  { path: 'fashions/:id', component: FashionDetail, canActivate: [authGuard] },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
+  { path: 'admin-login', component: AdminLoginComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng
 
 ];

@@ -4,6 +4,23 @@
         <p class="subtitle">Discover our exclusive MongoDB collections</p>
     </div>
 
+    <!-- Search By ID Section -->
+    <div class="search-section" style="margin-bottom: 1.5rem; display: flex; justify-content: center;">
+        <div class="search-box-id"
+            style="display: flex; gap: 10px; width: 100%; max-width: 600px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="flex-grow: 1; position: relative; display: flex; align-items: center;">
+                <i class="bi bi-search" style="position: absolute; left: 15px; color: #6c757d;"></i>
+                <input type="text" #fashionIdInput placeholder="Search Fashion by ID..."
+                    style="width: 100%; border: none; outline: none; padding: 10px 10px 10px 40px; font-size: 1rem; border-radius: 4px;"
+                    (keyup.enter)="viewDetail(fashionIdInput.value)">
+            </div>
+            <button (click)="viewDetail(fashionIdInput.value)"
+                style="background: #2b5876; color: white; border: none; padding: 0 20px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+                SEARCH
+            </button>
+        </div>
+    </div>
+
     <!-- Error Message Display -->
     <div class="error-banner" *ngIf="errMessage">
         <i class="bi bi-exclamation-triangle-fill"></i>
@@ -12,7 +29,8 @@
 
     <!-- Fashion Grid -->
     <div class="fashion-grid" *ngIf="fashions && fashions.length > 0">
-        <div class="fashion-card" *ngFor="let fashion of fashions">
+        <div class="fashion-card clickable-card" *ngFor="let fashion of fashions"
+            routerLink="/fashions/{{fashion._id}}">
             <div class="card-image-wrapper">
                 <img [src]="fashion.fashion_image || 'assets/images/placeholder.jpg'"
                     alt="{{ fashion.fashion_subject }}" class="fashion-image">

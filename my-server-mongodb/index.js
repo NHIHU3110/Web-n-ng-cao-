@@ -12,27 +12,67 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(cors())
 
-app.listen(port, () => {
-    console.log(`My Server listening on port ${port}`)
-})
-
-app.get("/", (req, res) => {
-    res.send("This Web server is processed for MongoDB")
-})
-
 // ============================================
 // Kết nối MongoDB
 // ============================================
-const { MongoClient, ObjectId } = require('mongodb');         // Line 23: Gọi thư viện mongodb
-client = new MongoClient("mongodb://127.0.0.1:27017");        // Line 24: Khai báo connection string
-client.connect();                                              // Line 25: Gọi lệnh connect đến Server
-database = client.db("FashionData");                          // Line 26: Kết nối đến Database "FashionData"
-fashionCollection = database.collection("Fashion");           // Line 27: Lấy collection Fashion
+const { MongoClient, ObjectId } = require('mongodb');
+const client = new MongoClient("mongodb://127.0.0.1:27017");
+let fashionCollection;
+
+async function startServer() {
+    try {
+        await client.connect();
+        const database = client.db("FashionData");
+        fashionCollection = database.collection("Fashion");
+        console.log("Connected to MongoDB Fashion Collection");
+
+        app.listen(port, () => {
+            console.log(`My Server listening on port ${port}`);
+        });
+    } catch (err) {
+        console.error("Failed to connect to MongoDB", err);
+        process.exit(1);
+    }
+}
+
+startServer();
+
+app.get("/", (req, res) => {
+    res.send("This Web server is processed for MongoDB");
+});
 
 // ============================================
 // API: GET /fashions - Lấy toàn bộ danh sách Fashion
 // ============================================
 app.get("/fashions", cors(), async (req, res) => {
-    const result = await fashionCollection.find({}).toArray();
-    res.send(result)
-})
+    try {
+        if (!fashionCollection) return res.status(503).send({ message: "Database not ready" });
+        const result = await fashionCollection.find({}).toArray();
+        res.send(result);
+    } catch (error) {
+        console.error("Error fetching fashions:", error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+});
+
+app.get("/fashions/:id", cors(), async (req, res) => {
+    try {
+        const id = req.params["id"];
+        // Kiểm tra xem id có đúng định dạng ObjectId 24 ký tự hex của MongoDB không
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).send({ message: "Invalid ID format" });
+        }
+
+        var o_id = new ObjectId(id);
+        const result = await fashionCollection.find({ _id: o_id }).toArray();
+
+        if (result && result.length > 0) {
+            res.send(result[0]);
+        } else {
+            res.status(404).send({ message: "Fashion not found" });
+        }
+    } catch (error) {
+        console.error("Error fetching fashion details:", error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+});
