@@ -45,7 +45,11 @@
 
                 <p class="fashion-detail">{{ fashion.fashion_detail }}</p>
 
-                <div class="card-footer">
+                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                    <button class="cart-add-btn" (click)="addToCart(fashion, $event)"
+                        style="background: #eab308; color: white; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.2s;">
+                        <i class="bi bi-cart-plus"></i> Add Cart
+                    </button>
                     <button class="view-btn">
                         <span>View Details</span>
                         <i class="bi bi-arrow-right"></i>

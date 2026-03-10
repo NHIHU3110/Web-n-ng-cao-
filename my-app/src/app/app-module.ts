@@ -45,6 +45,7 @@ import { AdminLoginComponent } from './admin-login/admin-login';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard';
 import { BaseChartDirective } from 'ng2-charts';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { Cart } from './cart/cart';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
     Ex13detail, Ex13, FakeProduct, Ex27, Ex18, Ex19Product, Ex19ListProduct, Ex19ServiceProduct,
     Ex21Login, Ex22Course, Ex24Math, Ex28Bitcoin,
     Learnbiding, Ptb1, Ptb2, Learndirective, LunarYear, Customerdetail, Ex14, Books, BookDetail, FileUpload, BookNewComponent, Ex50Component, FashionComponent, FashionDetail, RegisterComponent, CheckoutComponent,
-    AdminLoginComponent, AdminDashboardComponent
+    AdminLoginComponent, AdminDashboardComponent, Cart
   ],
   imports: [
     BrowserModule,

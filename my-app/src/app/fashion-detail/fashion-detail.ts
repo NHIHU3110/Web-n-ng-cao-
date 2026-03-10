@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FashionApiService } from '../myservices/fashion-api.service';
+import { CartService } from '../myservices/cart';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,6 +16,7 @@ export class FashionDetail implements OnInit {
 
   constructor(
     private _service: FashionApiService,
+    private _cartService: CartService,
     private _router: Router,
     private _activateRoute: ActivatedRoute,
     private _cdr: ChangeDetectorRef
@@ -66,6 +68,15 @@ export class FashionDetail implements OnInit {
     if (this.fashion) {
       localStorage.setItem('PENDING_ORDER', JSON.stringify(this.fashion));
       this._router.navigate(['/checkout']);
+    }
+  }
+
+  addToCart() {
+    if (this.fashion) {
+      this._cartService.addToCart(this.fashion).subscribe({
+        next: (res) => alert("Added to cart successfully!"),
+        error: (err) => alert("Failed to add to cart.")
+      });
     }
   }
 }

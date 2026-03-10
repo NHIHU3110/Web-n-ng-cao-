@@ -30,6 +30,7 @@ import { CheckoutComponent } from './checkout/checkout';
 import { AdminLoginComponent } from './admin-login/admin-login';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard';
 import { authGuard } from './myservices/auth.guard';
+import { Cart } from './cart/cart';
 const routes: Routes = [
   { path: 'gioi-thieu', component: About, canActivate: [authGuard] },
   { path: 'khach-hang-1', component: Listcustomer, canActivate: [authGuard] },
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'cart', component: Cart, canActivate: [authGuard] },
   { path: '**', component: Notfound }, // luôn để dòng cuối cùng
 
 ];

@@ -47,10 +47,15 @@
                 <p>{{ fashion.fashion_detail }}</p>
             </div>
 
-            <div class="actions">
+            <div class="actions" style="display: flex; gap: 15px; flex-wrap: wrap;">
                 <button class="back-btn" (click)="goBack()">
                     <i class="bi bi-arrow-left"></i>
                     <span>Back to Collection</span>
+                </button>
+                <button class="cart-btn" (click)="addToCart()"
+                    style="background: #eab308; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: all 0.2s;">
+                    <i class="bi bi-cart-plus-fill" style="font-size: 1.2rem;"></i>
+                    ADD TO CART
                 </button>
                 <button class="buy-btn" (click)="buyOnMomo()"
                     style="background: #2563eb; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: all 0.2s;">

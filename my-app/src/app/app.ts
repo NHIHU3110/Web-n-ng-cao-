@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from './myservices/auth.service';
+import { CartService } from './myservices/cart';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,15 @@ import { AuthService } from './myservices/auth.service';
 })
 export class App {
   protected readonly title = signal('my-app');
+  cartCount$: Observable<number>;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private cartService: CartService
+  ) {
+    this.cartCount$ = this.cartService.cartCount$;
+  }
 
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();

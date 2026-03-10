@@ -94,6 +94,17 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a routerLink="/cart" class="nav-link" routerLinkActive="active-link" style="position: relative;">
+                    <i class="bi bi-cart3"></i> CART
+                    <span *ngIf="(cartCount$ | async) as count" 
+                        class="badge rounded-pill bg-danger" 
+                        style="position: absolute; top: -5px; right: -10px; font-size: 0.7rem;">
+                        {{ count }}
+                    </span>
+                </a>
+            </li>
+
             <li class="nav-item logout-btn">
                 <a href="javascript:void(0)" (click)="onLogout()" class="nav-link text-danger">
                     <i class="bi bi-box-arrow-right"></i> LOGOUT

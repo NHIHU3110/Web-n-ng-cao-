@@ -1,5 +1,5 @@
 <div class="checkout-container">
-    <div class="checkout-card" *ngIf="order && !transactionId">
+    <div class="checkout-card" *ngIf="cartItems.length > 0 && !transactionId">
         <div class="checkout-header">
             <i class="bi bi-truck"></i>
             <h2>XÁC NHẬN ĐẶT HÀNG (Ship COD)</h2>
@@ -12,13 +12,15 @@
 
         <div class="order-summary">
             <h3>Tóm tắt đơn hàng</h3>
-            <div class="info-row">
-                <span>Sản phẩm:</span>
-                <strong>{{ order.fashion_subject }}</strong>
+            <div class="items-list" style="margin-bottom: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">
+                <div *ngFor="let item of cartItems" class="info-row" style="margin-bottom: 5px;">
+                    <span>{{ item.fashion_subject }} x {{ item.quantity }}</span>
+                    <strong>${{ (item.price || 100) * item.quantity }}</strong>
+                </div>
             </div>
             <div class="info-row price">
                 <span>Tổng thanh toán:</span>
-                <strong>150.000đ</strong>
+                <strong>${{ totalAmount }}</strong>
             </div>
         </div>
 
@@ -51,7 +53,6 @@
     </div>
 
     <!-- Success Screen -->
-    <!-- Success Screen -->
     <div class="success-card checkout-card" *ngIf="transactionId">
         <div class="success-icon">
             <i class="bi bi-check-circle-fill"></i>
@@ -66,7 +67,7 @@
             </div>
             <div class="info-row">
                 <span>Số tiền COD:</span>
-                <strong>150.000đ</strong>
+                <strong>${{ totalAmount }}</strong>
             </div>
             <div class="info-row">
                 <span>Mã đơn hàng:</span>

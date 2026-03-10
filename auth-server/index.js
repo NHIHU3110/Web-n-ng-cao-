@@ -102,7 +102,7 @@ app.post('/register', async (req, res) => {
 // Process Payment
 app.post('/process-payment', async (req, res) => {
     try {
-        const { userEmail, userName, amount, productId, productName, customerInfo, paymentMethod, status } = req.body;
+        const { userEmail, userName, amount, items, customerInfo, paymentMethod, status } = req.body;
 
         const transactionId = (paymentMethod === 'COD' ? 'TRX' : 'MOMO') + Date.now() + Math.floor(Math.random() * 1000);
 
@@ -110,8 +110,7 @@ app.post('/process-payment', async (req, res) => {
             userEmail,
             userName,
             amount,
-            productId,
-            productName,
+            items,
             customerInfo,
             paymentMethod,
             status: status || 'PENDING',

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaymentService } from '../myservices/payment.service';
 import { AuthService } from '../myservices/auth.service';
+import { CartService } from '../myservices/cart';
 
 @Component({
     selector: 'app-checkout',
@@ -10,7 +11,8 @@ import { AuthService } from '../myservices/auth.service';
     styleUrl: './checkout.css'
 })
 export class CheckoutComponent implements OnInit {
-    order: any = null;
+    cartItems: any[] = [];
+    totalAmount: number = 0;
     currentUser: any = null;
     isProcessing: boolean = false;
     transactionId: string = '';
@@ -26,16 +28,19 @@ export class CheckoutComponent implements OnInit {
         private router: Router,
         private paymentService: PaymentService,
         private authService: AuthService,
+        private cartService: CartService,
         private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit(): void {
-        const orderData = localStorage.getItem('PENDING_ORDER');
-        if (orderData) {
-            this.order = JSON.parse(orderData);
-        } else {
-            this.router.navigate(['/fashions']);
-        }
+        this.cartService.getCart().subscribe(items => {
+            this.cartItems = items || [];
+            if (this.cartItems.length === 0) {
+                this.router.navigate(['/fashions']);
+                return;
+            }
+            this.calculateTotal();
+        });
 
         this.authService.getCurrentUser().subscribe(user => {
             this.currentUser = user;
@@ -43,6 +48,12 @@ export class CheckoutComponent implements OnInit {
                 this.customerInfo.fullName = user.name || '';
             }
         });
+    }
+
+    calculateTotal() {
+        this.totalAmount = this.cartItems.reduce((acc, item) => {
+            return acc + (item.quantity * (item.price || 100));
+        }, 0);
     }
 
     onConfirmPayment(): void {
@@ -56,9 +67,13 @@ export class CheckoutComponent implements OnInit {
         const paymentPayload = {
             userEmail: this.currentUser?.email,
             userName: this.currentUser?.name,
-            amount: 150000, // Fixed price for demo
-            productId: this.order?._id,
-            productName: this.order?.fashion_subject,
+            amount: this.totalAmount,
+            items: this.cartItems.map(item => ({
+                id: item._id,
+                name: item.fashion_subject,
+                quantity: item.quantity,
+                price: item.price || 100
+            })),
             customerInfo: this.customerInfo,
             paymentMethod: 'COD',
             status: 'PENDING_COD'
@@ -66,18 +81,15 @@ export class CheckoutComponent implements OnInit {
 
         this.paymentService.processPayment(paymentPayload).subscribe({
             next: (res) => {
-                console.log('Payment Response:', res);
                 if (res && res.transactionId) {
                     this.transactionId = res.transactionId;
                     this.isProcessing = false;
-                    localStorage.removeItem('PENDING_ORDER');
-                    this.cdr.detectChanges(); // Force UI update
+                    this.cartService.clearCart().subscribe();
                 } else {
-                    console.error('Response missing transactionId', res);
                     this.transactionId = 'TRX-' + Date.now();
                     this.isProcessing = false;
-                    this.cdr.detectChanges();
                 }
+                this.cdr.detectChanges();
             },
             error: (err) => {
                 console.error('Payment Error:', err);
@@ -89,7 +101,6 @@ export class CheckoutComponent implements OnInit {
     }
 
     cancelCheckout(): void {
-        localStorage.removeItem('PENDING_ORDER');
-        this.router.navigate(['/fashions']);
+        this.router.navigate(['/cart']);
     }
 }

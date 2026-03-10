@@ -44,7 +44,9 @@
     },
     {
         "context": [
-            "/fashions"
+            "/fashions",
+            "/cart",
+            "/contact"
         ],
         "target": "http://localhost:3002",
         "secure": false,
