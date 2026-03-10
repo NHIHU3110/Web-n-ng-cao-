@@ -6,15 +6,28 @@ const morgan = require("morgan")
 app.use(morgan("combined"))
 
 const bodyParser = require("body-parser")
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 const cors = require("cors");
-app.use(cors())
-
+const corsOptions = {
+    origin: 'http://localhost:4200',
+    credentials: true,
+};
+app.use(cors(corsOptions));
 // Exercise 60: Cookie Parser
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+// ============================================
+// Setup Session
+// ============================================
+var session = require('express-session');
+app.use(session({
+    secret: "Shh, its a secret!",
+    resave: false,
+    saveUninitialized: true
+}));
 
 // ============================================
 // Kết nối MongoDB
@@ -48,7 +61,7 @@ app.get("/", (req, res) => {
 // ============================================
 // API: GET /fashions - Lấy toàn bộ danh sách Fashion
 // ============================================
-app.get("/fashions", cors(), async (req, res) => {
+app.get("/fashions", cors(corsOptions), async (req, res) => {
     try {
         if (!fashionCollection) return res.status(503).send({ message: "Database not ready" });
         const result = await fashionCollection.find({}).toArray();
@@ -59,7 +72,7 @@ app.get("/fashions", cors(), async (req, res) => {
     }
 });
 
-app.get("/fashions/:id", cors(), async (req, res) => {
+app.get("/fashions/:id", cors(corsOptions), async (req, res) => {
     try {
         const id = req.params["id"];
         // Kiểm tra xem id có đúng định dạng ObjectId 24 ký tự hex của MongoDB không
@@ -85,7 +98,7 @@ app.get("/fashions/:id", cors(), async (req, res) => {
 // ============================================
 
 // Step 3: Create Cookie - single data and JsonObject data
-app.get("/create-cookie", cors(), (req, res) => {
+app.get("/create-cookie", cors(corsOptions), (req, res) => {
     res.cookie("username", "tranduythanh");
     res.cookie("password", "123456");
     var account = { "username": "tranduythanh", "password": "123456" };
@@ -97,7 +110,7 @@ app.get("/create-cookie", cors(), (req, res) => {
 });
 
 // Step 4 & 5: Read Cookie
-app.get("/read-cookie", cors(), (req, res) => {
+app.get("/read-cookie", cors(corsOptions), (req, res) => {
     var username = req.cookies.username;
     var password = req.cookies.password;
     var account  = req.cookies.account;
@@ -113,7 +126,7 @@ app.get("/read-cookie", cors(), (req, res) => {
 });
 
 // Step 6: Clear Cookie
-app.get("/clear-cookie", cors(), (req, res) => {
+app.get("/clear-cookie", cors(corsOptions), (req, res) => {
     res.clearCookie("account");
     res.send("[account] Cookie is removed");
 });
@@ -138,7 +151,7 @@ async function initUserCollection() {
 initUserCollection();
 
 // POST /login - Check credentials and save cookie
-app.post("/login-ex61", cors(), async (req, res) => {
+app.post("/login-ex61", cors(corsOptions), async (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
     if (!userCollection) return res.status(503).json({ message: "DB not ready" });
@@ -153,9 +166,80 @@ app.post("/login-ex61", cors(), async (req, res) => {
 });
 
 // GET /read-login-cookie - Read saved login cookie
-app.get("/read-login-cookie", cors(), (req, res) => {
+app.get("/read-login-cookie", cors(corsOptions), (req, res) => {
     res.json({
         username: req.cookies.saved_username || "",
         password: req.cookies.saved_password || ""
     });
+});
+
+// ============================================
+// Exercise 62: Session Usage
+// ============================================
+app.get("/contact", cors(corsOptions), (req, res) => {
+    if (req.session.visited != null) {
+        req.session.visited++
+        res.send("You visited this page " + req.session.visited + " times")
+    } else {
+        req.session.visited = 1
+        res.send("Welcome to this page for the first time!")
+    }
+});
+
+// ============================================
+// Exercise 63: Shopping Cart via Session
+// ============================================
+
+// Get cart
+app.get("/cart", cors(corsOptions), (req, res) => {
+    res.json(req.session.cart || []);
+});
+
+// Add product to cart
+app.post("/cart", cors(corsOptions), (req, res) => {
+    const product = req.body;
+    if (!req.session.cart) {
+        req.session.cart = [];
+    }
+    
+    // Check if the product is already in the cart using its ID
+    const existingP = req.session.cart.find(p => p._id === product._id);
+    if (existingP) {
+        existingP.quantity += 1; // Increment quantity if it exists
+    } else {
+        product.quantity = 1;    // Initialize quantity
+        req.session.cart.push(product);
+    }
+    res.json(req.session.cart);
+});
+
+// Remove product from cart
+app.delete("/cart/:id", cors(corsOptions), (req, res) => {
+    const productId = req.params.id;
+    if (req.session.cart) {
+        req.session.cart = req.session.cart.filter(p => p._id !== productId);
+    }
+    res.json(req.session.cart || []);
+});
+
+// Update cart product quantity
+app.put("/cart/:id", cors(corsOptions), (req, res) => {
+    const productId = req.params.id;
+    const newQuantity = parseInt(req.body.quantity);
+    if (req.session.cart) {
+        const product = req.session.cart.find(p => p._id === productId);
+        if (product) {
+            product.quantity = newQuantity;
+            if (product.quantity <= 0) {
+                // Remove if quantity becomes zero or negative
+                req.session.cart = req.session.cart.filter(p => p._id !== productId);
+            }
+        }
+    }
+    res.json(req.session.cart || []);
+});
+
+app.delete("/cart", cors(corsOptions), (req, res) => {
+    req.session.cart = [];
+    res.json(req.session.cart);
 });
