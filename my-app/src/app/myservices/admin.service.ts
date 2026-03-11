@@ -36,8 +36,11 @@ export class AdminService {
     }
 
     adminLogin(credentials: any): boolean {
-        // Hardcoded admin for demo
-        if (credentials.email === 'admin@fashion.com' && credentials.password === 'admin123') {
+        // Support both old hardcoded and new users.json credentials
+        const isAdmin1 = credentials.email === 'admin@fashion.com' && credentials.password === 'admin123';
+        const isAdmin2 = credentials.email === 'admin@gmail.com' && credentials.password === '12345';
+        
+        if (isAdmin1 || isAdmin2) {
             localStorage.setItem('ADMIN_AUTH', 'true');
             return true;
         }

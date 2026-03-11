@@ -45,6 +45,9 @@
             <div class="description">
                 <h3>Description</h3>
                 <p>{{ fashion.fashion_detail }}</p>
+                <div class="price-display" style="font-size: 1.5rem; color: #b91c1c; font-weight: bold; margin: 15px 0;">
+                    Giá: {{ fashion.fashion_price || 100 }}.000 VNĐ
+                </div>
             </div>
 
             <div class="actions" style="display: flex; gap: 15px; flex-wrap: wrap;">

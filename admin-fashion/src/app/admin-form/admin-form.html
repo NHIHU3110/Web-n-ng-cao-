@@ -1,0 +1,50 @@
+<div class="form-container">
+  <div class="header-actions">
+    <h2>{{ isEditMode ? 'Edit Fashion' : 'Add New Fashion' }}</h2>
+    <a routerLink="/" class="btn btn-outline">Back to List</a>
+  </div>
+
+  <div class="form-card">
+    <div class="form-group">
+      <label for="title">Fashion Title *</label>
+      <input type="text" id="title" [(ngModel)]="fashion.title" placeholder="Enter title (e.g., Casual T-Shirt)" required>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="style">Style *</label>
+        <input type="text" id="style" [(ngModel)]="fashion.Style" placeholder="Enter style (e.g., Casual, Formal, Sport)" required>
+      </div>
+
+      <div class="form-group">
+        <label for="thumbnail">Thumbnail URL</label>
+        <input type="text" id="thumbnail" [(ngModel)]="fashion.thumbnail" placeholder="https://example.com/image.jpg">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Fashion Details (HTML)</label>
+      <div class="quill-wrapper">
+        <quill-editor 
+          [(ngModel)]="fashion.details"
+          placeholder="Enter details here..."
+          [modules]="{ toolbar: [
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote', 'code-block'],
+            [{ 'header': 1 }, { 'header': 2 }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],
+            [{ 'align': [] }],
+            ['clean'],
+            ['link', 'image']
+          ]}"
+        ></quill-editor>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-outline" routerLink="/">Cancel</button>
+      <button class="btn btn-primary" (click)="saveFashion()">{{ isEditMode ? 'Update' : 'Save' }} Fashion</button>
+    </div>
+  </div>
+</div>

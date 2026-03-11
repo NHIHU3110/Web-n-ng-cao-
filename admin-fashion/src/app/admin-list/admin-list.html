@@ -1,0 +1,40 @@
+<div class="list-container">
+  <div class="header-actions">
+    <h2>Fashion Management</h2>
+    <a routerLink="/fashions/new" class="btn btn-primary">+ Add New Fashion</a>
+  </div>
+
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Style</th>
+          <th>Created Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of fashions">
+          <td>
+            <img [src]="item.thumbnail" [alt]="item.title" class="thumb-img">
+          </td>
+          <td class="item-title">{{ item.title }}</td>
+          <td><span class="badge">{{ item.Style }}</span></td>
+          <td>{{ item.created_at | date:'dd/MM/yyyy' }}</td>
+          <td class="actions">
+            <!-- View uses the edit route for simplicity in the admin area, 
+                 or could route to client. Here we route to edit. -->
+            <button class="btn btn-outline btn-sm" (click)="viewDetail(item._id)">View</button>
+            <button class="btn btn-warning btn-sm" (click)="editFashion(item._id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteFashion(item._id)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="fashions.length === 0">
+          <td colspan="5" class="empty-state">No fashion items available. Click "Add New Fashion" to create one.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

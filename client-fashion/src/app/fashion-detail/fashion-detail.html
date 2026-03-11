@@ -1,0 +1,35 @@
+<div class="detail-container" *ngIf="fashion">
+  <div class="breadcrumb">
+    <a routerLink="/">← Back to Fashion List</a>
+  </div>
+
+  <div class="fashion-content">
+    <div class="image-column">
+      <img [src]="fashion.thumbnail" [alt]="fashion.title" class="main-image">
+    </div>
+    
+    <div class="info-column">
+      <div class="tags">
+        <span class="tag style-tag">{{ fashion.Style }}</span>
+        <span class="tag date-tag">{{ fashion.created_at | date:'medium' }}</span>
+      </div>
+      
+      <h1 class="title">{{ fashion.title }}</h1>
+      
+      <div class="divider"></div>
+      
+      <!-- Rendering WYSIWYG HTML Content Safely -->
+      <div class="html-content" [innerHTML]="fashion.details"></div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-state" *ngIf="loading">
+  <div class="spinner"></div>
+  <p>Loading fashion details...</p>
+</div>
+
+<div class="error-state" *ngIf="error">
+  <p>{{ error }}</p>
+  <a routerLink="/" class="btn-back">Return Home</a>
+</div>

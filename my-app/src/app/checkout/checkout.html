@@ -15,12 +15,12 @@
             <div class="items-list" style="margin-bottom: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">
                 <div *ngFor="let item of cartItems" class="info-row" style="margin-bottom: 5px;">
                     <span>{{ item.fashion_subject }} x {{ item.quantity }}</span>
-                    <strong>${{ (item.price || 100) * item.quantity }}</strong>
+                    <strong>{{ ((item.fashion_price || item.price || 100) * item.quantity) | number:'1.0-0' }}.000 VNĐ</strong>
                 </div>
             </div>
             <div class="info-row price">
                 <span>Tổng thanh toán:</span>
-                <strong>${{ totalAmount }}</strong>
+                <strong>{{ totalAmount | number:'1.0-0' }}.000 VNĐ</strong>
             </div>
         </div>
 
@@ -67,7 +67,7 @@
             </div>
             <div class="info-row">
                 <span>Số tiền COD:</span>
-                <strong>${{ totalAmount }}</strong>
+                <strong>{{ totalAmount }} VNĐ</strong>
             </div>
             <div class="info-row">
                 <span>Mã đơn hàng:</span>

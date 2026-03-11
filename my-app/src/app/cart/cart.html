@@ -21,18 +21,18 @@
         <tr *ngFor="let item of cartItems">
           <td><img [src]="item.fashion_image || 'assets/images/placeholder.jpg'" alt="{{item.fashion_subject}}" width="50" style="object-fit: contain;"></td>
           <td>{{ item.fashion_subject }}</td>
-          <td>${{ item.price || 100 }}</td>
+          <td>{{ (item.fashion_price || item.price || 100) }}.000 VNĐ</td>
           <td>
             <input type="number" [value]="item.quantity" min="1" (change)="updateQuantity(item._id, $event)" class="quantity-input">
           </td>
-          <td>${{ (item.price || 100) * item.quantity }}</td>
+          <td>{{ ((item.fashion_price || item.price || 100) * item.quantity) | number:'1.0-0' }}.000 VNĐ</td>
           <td><button class="remove-btn" (click)="removeItem(item._id)"><i class="bi bi-trash"></i> Remove</button></td>
         </tr>
       </tbody>
     </table>
     
     <div class="cart-summary">
-      <h3>Total Price: ${{ totalPrice }}</h3>
+      <h3>Total Price: {{ totalPrice | number:'1.0-0' }}.000 VNĐ</h3>
       <div class="cart-actions">
         <button class="continue-btn" (click)="continueShopping()">Continue Shopping</button>
         <button class="checkout-btn" routerLink="/checkout">Checkout</button>

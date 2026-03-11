@@ -30,8 +30,7 @@ export class Cart implements OnInit {
 
   calculateTotal() {
     this.totalPrice = this.cartItems.reduce((acc, item) => {
-      // If price is missing for Fashion items, assume 100 as default
-      let price = item.price || 100;
+      let price = item.fashion_price || item.price || 100;
       return acc + (item.quantity * price);
     }, 0);
   }

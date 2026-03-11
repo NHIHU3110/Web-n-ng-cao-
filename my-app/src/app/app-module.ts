@@ -66,6 +66,7 @@ import { Cart } from './cart/cart';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [App]
 })

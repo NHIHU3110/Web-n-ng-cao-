@@ -52,7 +52,8 @@ export class CheckoutComponent implements OnInit {
 
     calculateTotal() {
         this.totalAmount = this.cartItems.reduce((acc, item) => {
-            return acc + (item.quantity * (item.price || 100));
+            let price = item.fashion_price || item.price || 100;
+            return acc + (item.quantity * price);
         }, 0);
     }
 
@@ -72,7 +73,7 @@ export class CheckoutComponent implements OnInit {
                 id: item._id,
                 name: item.fashion_subject,
                 quantity: item.quantity,
-                price: item.price || 100
+                price: item.fashion_price || item.price || 100
             })),
             customerInfo: this.customerInfo,
             paymentMethod: 'COD',

@@ -158,7 +158,8 @@ app.get('/admin/chart-stats', async (req, res) => {
             last7Days.push({
                 date: d.toLocaleDateString('en-CA'), // YYYY-MM-DD local
                 label: d.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric' }),
-                revenue: 0
+                revenue: 0,
+                orderCount: 0
             });
         }
 
@@ -172,6 +173,7 @@ app.get('/admin/chart-stats', async (req, res) => {
             const daySlot = last7Days.find(d => d.date === txDate);
             if (daySlot) {
                 daySlot.revenue += (Number(tx.amount) || 0);
+                daySlot.orderCount += 1;
             }
         });
 

@@ -1,0 +1,32 @@
+<div class="fashion-container">
+  <div class="filter-section">
+    <label for="style-filter">Filter by Style:</label>
+    <select id="style-filter" [(ngModel)]="selectedStyle" (change)="onStyleChange()">
+      <option value="">All Styles</option>
+      <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="fashions.length === 0" class="no-data">
+    No fashion items found.
+  </div>
+
+  <div *ngFor="let style of styles" class="style-group">
+    <!-- Only show style group if there are fashions matching it (or if no filter is applied) -->
+    <ng-container *ngIf="groupedFashions[style] && groupedFashions[style].length > 0">
+      <h2 class="style-title">{{ style }} Collection</h2>
+      <div class="grid-container">
+        <div class="fashion-card" *ngFor="let item of groupedFashions[style]" [routerLink]="['/fashions', item._id]">
+          <div class="image-wrapper">
+            <img [src]="item.thumbnail" [alt]="item.title">
+          </div>
+          <div class="card-content">
+            <h3>{{ item.title }}</h3>
+            <p class="date">{{ item.created_at | date:'mediumDate' }}</p>
+            <button class="btn-overlay" [routerLink]="['/fashions', item._id]">View Details</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

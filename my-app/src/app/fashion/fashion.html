@@ -45,6 +45,10 @@
 
                 <p class="fashion-detail">{{ fashion.fashion_detail }}</p>
 
+                <div class="fashion-price-tag" style="margin-top: 10px; font-weight: bold; color: #b91c1c; font-size: 1.1rem;">
+                    {{ fashion.fashion_price || 100 }}.000 VNĐ
+                </div>
+
                 <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
                     <button class="cart-add-btn" (click)="addToCart(fashion, $event)"
                         style="background: #eab308; color: white; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.2s;">

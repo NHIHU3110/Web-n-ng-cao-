@@ -32,7 +32,10 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     loadStats() {
-        this.adminService.getStats().subscribe(data => this.stats = data);
+        this.adminService.getStats().subscribe(data => {
+            this.stats = data;
+            this.cdr.detectChanges();
+        });
         this.loadChartData();
     }
 
@@ -55,13 +58,26 @@ export class AdminDashboardComponent implements OnInit {
     public lineChartOptions: ChartOptions = {
         responsive: true,
         plugins: {
-            legend: { display: false }
+            legend: { display: true, position: 'top' }
         },
         scales: {
-            y: {
+            y: { // Axis for Revenue
+                type: 'linear',
+                display: true,
+                position: 'left',
                 beginAtZero: true,
                 grid: { color: '#f1f5f9' },
-                ticks: { color: '#64748b' }
+                ticks: { color: '#64748b' },
+                title: { display: true, text: 'Doanh thu (VNĐ)', color: '#3b82f6' }
+            },
+            y1: { // Axis for Order Count
+                type: 'linear',
+                display: true,
+                position: 'right',
+                beginAtZero: true,
+                grid: { drawOnChartArea: false },
+                ticks: { color: '#ef4444', stepSize: 1 },
+                title: { display: true, text: 'Số đơn hàng', color: '#ef4444' }
             },
             x: {
                 grid: { display: false },
@@ -76,27 +92,46 @@ export class AdminDashboardComponent implements OnInit {
         this.adminService.getChartStats().subscribe(data => {
             this.lineChartData = {
                 labels: data.map((d: any) => d.label),
-                datasets: [{
-                    data: data.map((d: any) => d.revenue),
-                    label: 'Doanh thu (VNĐ)',
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: '#3b82f6',
-                    pointBackgroundColor: '#2563eb',
-                    pointBorderColor: '#fff',
-                    fill: 'origin',
-                    tension: 0.4
-                }]
+                datasets: [
+                    {
+                        data: data.map((d: any) => d.revenue),
+                        label: 'Doanh thu (VNĐ)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderColor: '#3b82f6',
+                        pointBackgroundColor: '#2563eb',
+                        pointBorderColor: '#fff',
+                        fill: 'origin',
+                        tension: 0.4,
+                        yAxisID: 'y'
+                    },
+                    {
+                        data: data.map((d: any) => d.orderCount),
+                        label: 'Số đơn hàng',
+                        backgroundColor: 'transparent',
+                        borderColor: '#ef4444',
+                        pointBackgroundColor: '#ef4444',
+                        pointBorderColor: '#fff',
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }
+                ]
             };
             this.cdr.detectChanges(); // Force chart to re-render
         });
     }
 
     loadOrders() {
-        this.adminService.getOrders().subscribe(data => this.orders = data);
+        this.adminService.getOrders().subscribe(data => {
+            this.orders = data;
+            this.cdr.detectChanges();
+        });
     }
 
     loadCustomers() {
-        this.adminService.getCustomers().subscribe(data => this.customers = data);
+        this.adminService.getCustomers().subscribe(data => {
+            this.customers = data;
+            this.cdr.detectChanges();
+        });
     }
 
     setTab(tab: string) {

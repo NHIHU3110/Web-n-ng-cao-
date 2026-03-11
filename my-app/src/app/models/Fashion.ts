@@ -4,6 +4,7 @@ export class Fashion {
         public style: string = "",
         public fashion_subject: string = "",
         public fashion_detail: string = "",
-        public fashion_image: string = ""
+        public fashion_image: string = "",
+        public fashion_price: number = 100
     ) { }
 }

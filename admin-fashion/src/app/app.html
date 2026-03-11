@@ -1,0 +1,17 @@
+<div class="admin-app">
+  <header class="app-header">
+    <div class="header-container">
+      <h1>Fashion Admin Dashboard</h1>
+      <nav>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Fashion List</a>
+        <a routerLink="/fashions/new" routerLinkActive="active">Add New</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="app-main">
+    <div class="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
